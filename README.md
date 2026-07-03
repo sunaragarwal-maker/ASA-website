@@ -1,4 +1,4 @@
-# Kumar & Associates — Website
+# Anand Shyam & Associates — Website
 
 Website for a Chartered Accountancy firm, built with React, Vite, and Tailwind CSS.
 

@@ -1,12 +1,12 @@
 // Central place for all site text. Edit values here to update the whole site.
 export const firm = {
-  name: "Kumar & Associates",
-  shortName: "K&A",
+  name: "Anand Shyam & Associates",
+  shortName: "ASA",
   tagline: "Trusted Financial Guidance, Built on Integrity",
   founder: "CA Rajesh Kumar",
   founderCreds: "FCA, DISA",
   founderBio:
-    "CA Rajesh Kumar is a Fellow Chartered Accountant with over 20 years of experience advising individuals, startups, and established businesses on taxation, audit, and financial strategy. Having qualified from the Institute of Chartered Accountants of India (ICAI), he founded Kumar & Associates with a simple goal: give every client the clarity and personal attention that larger firms often can't.",
+    "CA Rajesh Kumar is a Fellow Chartered Accountant with over 20 years of experience advising individuals, startups, and established businesses on taxation, audit, and financial strategy. Having qualified from the Institute of Chartered Accountants of India (ICAI), he founded Anand Shyam & Associates with a simple goal: give every client the clarity and personal attention that larger firms often can't.",
   founderPhoto: null,
   yearFounded: 2005,
   phone: "+91 98765 43210",
@@ -92,7 +92,7 @@ export const whyChooseUs = [
 export const testimonials = [
   {
     quote:
-      "Kumar & Associates has managed our company's audit and tax filings for six years now. Their attention to detail and proactive advice has saved us both money and stress.",
+      "Anand Shyam & Associates has managed our company's audit and tax filings for six years now. Their attention to detail and proactive advice has saved us both money and stress.",
     name: "Anita Sharma",
     role: "Director, Sharma Textiles Pvt. Ltd.",
   },
