@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   ArrowRight,
   PhoneCall,
@@ -40,13 +41,13 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
               className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 font-medium text-navy-950 hover:bg-gold-400 transition-colors"
             >
               Book a Consultation
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
             <a
               href={`tel:${firm.phone.replace(/\s/g, "")}`}
               className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 font-medium text-white hover:border-gold-400 hover:text-gold-400 transition-colors"

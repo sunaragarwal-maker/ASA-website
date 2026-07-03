@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Landmark } from "lucide-react";
 import { firm, navLinks, usefulLinks } from "../content";
 
@@ -24,9 +25,9 @@ export default function Footer() {
             <ul className="mt-4 space-y-2 text-sm text-gray-400">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="hover:text-gold-400 transition-colors">
+                  <Link to={link.href} className="hover:text-gold-400 transition-colors">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

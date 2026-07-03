@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowRight, KeyRound } from "lucide-react";
 import { ctaBanner } from "../content";
 
@@ -12,13 +13,13 @@ export default function CTABanner() {
           </h3>
           <p className="mt-2 text-navy-900/80 max-w-xl">{ctaBanner.subtext}</p>
         </div>
-        <a
-          href="#contact"
+        <Link
+          to="/contact"
           className="inline-flex items-center gap-2 rounded-full bg-navy-950 px-6 py-3 font-medium text-white hover:bg-navy-800 transition-colors shrink-0"
         >
           Book a Consultation
           <ArrowRight className="w-4 h-4" />
-        </a>
+        </Link>
       </div>
     </section>
   );
