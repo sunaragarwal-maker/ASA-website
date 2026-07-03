@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+
+  --color-navy-950: #0a1929;
+  --color-navy-900: #0f2540;
+  --color-navy-800: #16334f;
+  --color-navy-700: #1f4568;
+  --color-navy-600: #2c5a85;
+
+  --color-gold-400: #d9b45a;
+  --color-gold-500: #c9a227;
+  --color-gold-600: #a8841c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+}
