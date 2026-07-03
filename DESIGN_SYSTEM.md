@@ -1,8 +1,8 @@
 # Design System
 
-Live reference: run the dev server and visit `#/design-system` (not linked
-in the nav — internal only). It renders every token and component variant
-below, including a working dark-mode toggle.
+Live reference: run the dev server and visit `/design-system` (not linked
+in the nav, and excluded via `robots.txt` — internal only). It renders every
+token and component variant below, including a working dark-mode toggle.
 
 ## Where things live
 
@@ -12,16 +12,21 @@ below, including a working dark-mode toggle.
   `src/components/ui/index.js`.
 - `src/pages/DesignSystemPage.jsx` — the living style guide.
 
-## Status: system built, pages not yet migrated
+## Status
 
-This pass built the foundation and did **not** touch the existing marketing
-sections (`Hero`, `About`, `Services`, `WhyChooseUs`, `Testimonials`,
-`FounderMessage`, `CTABanner`, `Contact`, `Footer`, `Navbar`). Those still
-contain the duplicated patterns this system was built to replace (repeated
-eyebrow/card/button className strings, `tracking-[0.2em]` arbitrary values,
-one hardcoded hex in `Hero.jsx`'s background grid). Migrating them onto the
-primitives below is the natural next step, deliberately left undone so the
-system could be reviewed on its own first.
+The Services ecosystem (`ServicesPage`, `ServiceCategoryPage`, and every
+component under `src/components/` built for it) is built on these primitives
+— `Container`, `Section`, `SectionHeading`, `Button`, `Card` via `IconCard`.
+That's the intended pattern going forward: new pages are assembled from
+`src/components/ui/`, not hand-written utility strings.
+
+`Hero`, `About`, `WhyChooseUs`, `Testimonials`, `FounderMessage`, `CTABanner`,
+`Contact`, `Footer`, `Navbar` predate the design system and were **not**
+migrated onto the primitives — they still hand-write the eyebrow/card/button
+patterns the system replaces. They did get touched for real bugs found in a
+later accessibility pass (see below), but that was a color-value fix in
+place, not a migration onto `Eyebrow`/`Card`/`Button`. Migrating them is
+still the natural next step.
 
 ## Tokens
 
@@ -64,14 +69,46 @@ arbitrary value that was duplicated seven times.
 | `Skeleton` | not yet used — built for the first async data feature |
 | `Divider` | the ad hoc `border-t` hairlines |
 
+Built for the Services ecosystem specifically (in `src/components/`, not
+`ui/` — they compose the primitives above rather than being primitives
+themselves):
+
+| Component | Purpose |
+|---|---|
+| `Seo` | per-route title/description/canonical/OG tags |
+| `Breadcrumbs` | visual trail + `BreadcrumbList` JSON-LD from one data source |
+| `FAQAccordion` | accessible accordion + `FAQPage` JSON-LD from one data source |
+| `MegaMenu` | desktop Services dropdown, driven by `servicesData.js` |
+| `ProcessTimeline`, `IndustryGrid`, `WhyChooseUsGrid` | the three sections repeated on the landing page and every category page |
+| `IconCard` | icon + title + description card — renders both "individual services" and "benefits" |
+| `ServiceCategoryCard` | the 8 clickable cards on the Services landing page |
+
 ## Accessibility gaps this closed
 
 - **Focus states**: previously only form inputs had any focus ring; every
-  button/link had none. `Button` and `TextLink` now carry
-  `focus-visible:ring-2 focus-visible:ring-gold-500` with a
-  context-appropriate ring offset.
+  button/link had none. `Button` and `TextLink` now carry a focus-visible
+  ring with a context-appropriate offset.
 - **Disabled states**: didn't exist anywhere. `Button` and `Input`/`Textarea`
   now both support them.
+- **Two real WCAG AA contrast failures**, found in a later self-review pass
+  (not caught when each component was first built) and fixed sitewide, not
+  just in the file where they were noticed:
+  - The eyebrow label color (`gold-600`, `#a8841c`) only hits 3.51:1 against
+    white — short of the 4.5:1 required for small text. Now `gold-700`
+    (`#866815`, 5.24:1). This was hardcoded in seven places, including three
+    files that predate this design system (`About.jsx`, `Contact.jsx`,
+    `Testimonials.jsx`, `FounderMessage.jsx`) — fixed everywhere, since a
+    color contrast failure isn't something to leave in place on the excuse
+    that the file wasn't otherwise in scope.
+  - The focus ring color (`gold-500`) only hits 2.42:1 against light
+    backgrounds — short of the 3:1 minimum for focus indicators (WCAG
+    2.4.11 / 1.4.11). Standardized on `gold-600`, which clears 3:1 against
+    every background actually in use (white, `gray-50`, `gray-100`, and
+    `navy-950`).
+  - Error-state red (`red-400` border/ring, `red-500` text) was under
+    threshold too; both are now `red-600`.
+- Every page now has exactly one `<h1>` — `About` and `Contact` had zero
+  before a heading-hierarchy audit caught it (both opened directly at `h2`).
 
 ## A gotcha worth remembering
 
@@ -89,11 +126,51 @@ is not.
 
 ## Known follow-ups
 
-- Migrate the nine existing section components onto these primitives.
-- `Hero.jsx` hardcodes `#c9a227` in a raw CSS `linear-gradient` string —
-  should reference `var(--color-gold-500)` instead once that file is
-  touched (left alone this pass — page-specific, out of scope).
+- Migrate `Hero`, `About`, `WhyChooseUs`, `Testimonials`, `FounderMessage`,
+  `CTABanner`, `Contact`, `Footer`, `Navbar` onto these primitives.
+- `Hero.jsx` still hardcodes `#c9a227` in a raw CSS `linear-gradient` string
+  (the new Services hero sections reference `var(--color-gold-500)`
+  instead) — fix once `Hero.jsx` itself is touched.
 - Dark mode is real for the primitives (`Card`, `Input`/`Textarea`, `Badge`,
   `Section`) but not for page copy, which still uses raw `text-gray-*`
   utilities with no `dark:` counterpart. Full page dark mode needs a second
   pass through content text colors if it's ever activated.
+
+## Services ecosystem architecture (routing, SEO)
+
+The site grew from 4 static pages to 13 (8 service categories + landing +
+home/about/contact) in the same pass that built this out. Two decisions
+worth understanding before extending it further:
+
+**Routing: `BrowserRouter`, not `HashRouter`.** The site started on
+`HashRouter` (URLs like `#/about`) because GitHub Pages has no server-side
+rewrite rules — a direct request to a real path like `/services/taxation`
+404s, since there's no matching static file. Clean URLs were worth fixing
+that for, so `public/404.html` + a decode script in `index.html` implement
+the standard GitHub Pages SPA fallback
+([rafgraph/spa-github-pages](https://github.com/rafgraph/spa-github-pages)):
+GitHub serves `404.html` for any unknown path, which re-encodes it as a
+query string and redirects to the app shell; the app shell decodes it back
+to a real path before React Router mounts. `App.jsx`'s `BrowserRouter`
+carries `basename="/ASA-website"` to match `vite.config.js`'s `base`.
+
+**SEO is real but partial, by the nature of a client-only SPA.** `Seo.jsx`
+updates `document.title`, meta description, canonical, and OG tags per
+route; `FAQAccordion` and `Breadcrumbs` emit their own JSON-LD from the same
+data they render visually, so structured data can't drift out of sync with
+the page. `index.html` carries a static site-wide `ProfessionalService`
+JSON-LD block. Google's crawler executes JavaScript, so this should get
+indexed reasonably well. What this does **not** solve: social-media
+link-unfurling bots (Facebook, WhatsApp, LinkedIn, Slack) don't run
+JavaScript and only ever read `index.html`'s static tags — sharing a link
+straight to `/services/taxation` will show the homepage's OG title/
+description in the preview card, not the Taxation page's. Fixing that
+properly means prerendering or server-side rendering, which is a bigger
+architectural call than this pass made unilaterally.
+
+**Data-driven, not page-per-file.** All 8 category pages are one component,
+`ServiceCategoryPage.jsx`, driven by `servicesData.js` and matched via
+`useParams()` + a `services/:slug` route. Adding category #9 means adding an
+entry to `serviceCategories` in `servicesData.js` — no new route, no new
+page file, no nav change beyond what's already data-driven (`MegaMenu` and
+the mobile accordion both map over `serviceCategories` directly).
