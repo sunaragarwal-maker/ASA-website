@@ -1,18 +1,101 @@
 @import "tailwindcss";
 
+/* Class-based dark-mode variant. Not switched on anywhere in the live
+   site yet - this only exists so components can be authored with
+   dark: classes now and the site can opt in later by toggling a
+   .dark class on <html>, without a token or component rewrite. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Token reference (Tailwind v4's @theme block below only accepts
+  custom properties, not comments, so the "why" lives up here):
+
+  --tracking-eyebrow   Letter-spacing for section eyebrows. Wider than
+                       Tailwind's built-in tracking-widest (0.1em);
+                       previously a `tracking-[0.2em]` arbitrary value
+                       repeated seven times across components.
+
+  --color-navy-*       50-950, an 11-step ramp. 600-950 are the
+                       original brand anchors already in production;
+                       50-500 extend it for hover/disabled/subtle-bg
+                       use cases that didn't have room before.
+  --color-gold-*       50-900, same idea - 400-600 are the anchors.
+  --color-whatsapp     Third-party brand color, tokenized instead of
+                       an inline bg-[#25D366].
+
+  --color-surface(-alt|-dark|-dark-alt)
+  --color-ink(-muted|-inverted|-inverted-muted)
+  --color-brand(-strong|-soft)
+  --color-border(-dark)
+  --color-focus        Semantic layer on top of the raw ramps.
+                       Components should reach for these where the
+                       intent is structural (surface/text/border)
+                       rather than brand-specific - it's what makes
+                       dark mode a token swap later instead of a
+                       find-and-replace across every component.
+
+  --shadow-sm/md/lg/xl Navy-tinted (not Tailwind's neutral-gray
+                       default) shadows, doubling as a 3-step
+                       elevation system: sm = resting card, md =
+                       hover/active, lg = floating (sticky nav,
+                       WhatsApp button). xl is reserved for future
+                       overlays/modals.
+*/
+
 @theme {
   --font-sans: "Inter", system-ui, "Segoe UI", Roboto, sans-serif;
   --font-serif: "Source Serif 4", Georgia, serif;
 
-  --color-navy-950: #0a1929;
-  --color-navy-900: #0f2540;
-  --color-navy-800: #16334f;
-  --color-navy-700: #1f4568;
-  --color-navy-600: #2c5a85;
+  --tracking-eyebrow: 0.2em;
 
+  --color-navy-50: #eef3f8;
+  --color-navy-100: #dce7f1;
+  --color-navy-200: #b3cbe0;
+  --color-navy-300: #82a9c9;
+  --color-navy-400: #5484ab;
+  --color-navy-500: #3c6890;
+  --color-navy-600: #2c5a85;
+  --color-navy-700: #1f4568;
+  --color-navy-800: #16334f;
+  --color-navy-900: #0f2540;
+  --color-navy-950: #0a1929;
+
+  --color-gold-50: #fbf6e7;
+  --color-gold-100: #f6ecd0;
+  --color-gold-200: #ecd7a1;
+  --color-gold-300: #e0bd70;
   --color-gold-400: #d9b45a;
   --color-gold-500: #c9a227;
   --color-gold-600: #a8841c;
+  --color-gold-700: #866815;
+  --color-gold-800: #654f10;
+  --color-gold-900: #493a0c;
+
+  --color-whatsapp: #25d366;
+
+  --color-surface: #ffffff;
+  --color-surface-alt: #f9fafb;
+  --color-surface-dark: var(--color-navy-950);
+  --color-surface-dark-alt: var(--color-navy-900);
+
+  --color-ink: var(--color-navy-950);
+  --color-ink-muted: #4b5563;
+  --color-ink-inverted: #ffffff;
+  --color-ink-inverted-muted: #d1d5db;
+
+  --color-brand: var(--color-gold-500);
+  --color-brand-strong: var(--color-gold-600);
+  --color-brand-soft: var(--color-gold-400);
+
+  --color-border: #f3f4f6;
+  --color-border-dark: rgb(255 255 255 / 10%);
+
+  --color-focus: var(--color-gold-500);
+
+  --shadow-sm: 0 1px 2px 0 rgb(10 25 41 / 5%);
+  --shadow-md: 0 4px 12px -2px rgb(10 25 41 / 10%), 0 2px 4px -2px rgb(10 25 41 / 6%);
+  --shadow-lg: 0 12px 24px -4px rgb(10 25 41 / 14%), 0 4px 8px -4px rgb(10 25 41 / 8%);
+  --shadow-xl: 0 24px 48px -8px rgb(10 25 41 / 18%);
 }
 
 html {
