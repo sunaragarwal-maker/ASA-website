@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Landmark, ChevronDown } from "lucide-react";
 import { firm } from "../content";
@@ -9,13 +9,58 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const servicesTriggerRef = useRef(null);
   const location = useLocation();
 
-  const linkClass = ({ isActive }) =>
-    `hover:text-gold-400 transition-colors ${isActive ? "text-gold-400" : ""}`;
-
   const servicesActive = location.pathname.startsWith("/services");
+
+  // Subtle depth cue once the page scrolls — the header itself stays a
+  // solid navy at all times (a transparent-until-scroll header was tried
+  // earlier and reverted: it made nav text invisible on every page whose
+  // top section isn't dark, which is every page but Home).
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close both menus on any route change (covers link clicks, but also
+  // browser back/forward, which a click handler alone wouldn't catch).
+  useEffect(() => {
+    setOpen(false);
+    setMegaOpen(false);
+    setMobileServicesOpen(false);
+  }, [location.pathname]);
+
+  // While the mobile menu is open: lock background scroll, and mark the
+  // rest of the page inert so Tab can't reach content sitting behind the
+  // (visually solid, but not focus-trapped by default) menu overlay.
+  useEffect(() => {
+    const main = document.getElementById("main-content");
+    const footer = document.querySelector("footer");
+    const whatsapp = document.getElementById("whatsapp-button");
+    const elements = [main, footer, whatsapp].filter(Boolean);
+
+    document.body.style.overflow = open ? "hidden" : "";
+    elements.forEach((el) => {
+      el.inert = open;
+    });
+
+    return () => {
+      document.body.style.overflow = "";
+      elements.forEach((el) => {
+        el.inert = false;
+      });
+    };
+  }, [open]);
+
+  const linkClass = ({ isActive }) =>
+    `relative inline-block py-1 transition-colors hover:text-gold-400 ${isActive ? "text-gold-400" : ""}
+    after:content-[''] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-px after:bg-gold-400
+    after:origin-center after:transition-transform after:duration-200 motion-reduce:after:transition-none
+    ${isActive ? "after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"}`;
 
   const closeMobileMenu = () => {
     setOpen(false);
@@ -23,11 +68,19 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-navy-950/95 backdrop-blur shadow-lg">
-      <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 text-white">
-          <Landmark className="w-6 h-6 text-gold-500" />
-          <span className="font-serif text-lg tracking-wide">{firm.name}</span>
+    <header
+      className={`fixed top-0 inset-x-0 z-50 bg-navy-950/95 backdrop-blur transition-shadow duration-300
+        ${scrolled ? "shadow-lg" : "shadow-none"}`}
+    >
+      <nav
+        className={`max-w-6xl mx-auto flex items-center justify-between px-6 transition-[padding] duration-300
+          ${scrolled ? "py-3" : "py-4"}`}
+      >
+        <Link to="/" className="flex items-center gap-2 text-white group">
+          <Landmark className="w-6 h-6 text-gold-500 transition-transform duration-200 group-hover:scale-110 motion-reduce:group-hover:scale-100" />
+          <span className="font-serif text-lg tracking-wide transition-colors group-hover:text-gold-100">
+            {firm.name}
+          </span>
         </Link>
 
         <ul className="hidden md:flex items-center gap-8 text-sm text-gray-200">
@@ -49,9 +102,11 @@ export default function Navbar() {
               aria-haspopup="true"
               aria-controls="services-mega-menu"
               onClick={() => setMegaOpen((v) => !v)}
-              className={`flex items-center gap-1 transition-colors hover:text-gold-400
+              className={`relative flex items-center gap-1 py-1 transition-colors hover:text-gold-400
                 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 rounded-sm
-                ${servicesActive ? "text-gold-400" : ""}`}
+                after:content-[''] after:absolute after:left-0 after:right-4 after:-bottom-0.5 after:h-px after:bg-gold-400
+                after:origin-center after:transition-transform after:duration-200 motion-reduce:after:transition-none
+                ${servicesActive ? "text-gold-400 after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100"}`}
             >
               Services
               <ChevronDown
@@ -72,7 +127,8 @@ export default function Navbar() {
 
         <Link
           to="/contact"
-          className="hidden md:inline-flex items-center rounded-full bg-gold-500 px-5 py-2 text-sm font-medium text-navy-950 hover:bg-gold-400 transition-colors
+          className="hidden md:inline-flex items-center rounded-full bg-gold-500 px-5 py-2 text-sm font-medium text-navy-950
+            transition-all duration-200 hover:bg-gold-400 hover:shadow-md hover:-translate-y-px motion-reduce:hover:translate-y-0
             focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950"
         >
           Book a Consultation
@@ -80,7 +136,7 @@ export default function Navbar() {
 
         <button
           className="md:hidden text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 rounded-sm"
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
@@ -89,7 +145,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden bg-navy-950 px-6 pb-6">
+        <div className="animate-panel-in md:hidden bg-navy-950 px-6 pb-6 max-h-[calc(100dvh-5rem)] overflow-y-auto">
           <ul className="flex flex-col gap-4 text-gray-200">
             <li>
               <NavLink to="/" end className={linkClass} onClick={closeMobileMenu}>
@@ -119,30 +175,35 @@ export default function Navbar() {
                   aria-hidden="true"
                 />
               </button>
-              {mobileServicesOpen && (
-                <ul id="mobile-services-submenu" className="mt-3 ml-3 space-y-3 border-l border-white/10 pl-4">
-                  {serviceCategories.map((category) => (
-                    <li key={category.slug}>
+              <div
+                className={`grid transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none
+                  ${mobileServicesOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+              >
+                <div className="overflow-hidden">
+                  <ul id="mobile-services-submenu" className="mt-3 ml-3 space-y-3 border-l border-white/10 pl-4 pb-1">
+                    {serviceCategories.map((category) => (
+                      <li key={category.slug}>
+                        <Link
+                          to={`/services/${category.slug}`}
+                          onClick={closeMobileMenu}
+                          className="block text-sm text-gray-300 hover:text-gold-400 transition-colors"
+                        >
+                          {category.name}
+                        </Link>
+                      </li>
+                    ))}
+                    <li>
                       <Link
-                        to={`/services/${category.slug}`}
+                        to="/services"
                         onClick={closeMobileMenu}
-                        className="block text-sm text-gray-300 hover:text-gold-400 transition-colors"
+                        className="block text-sm font-medium text-gold-400"
                       >
-                        {category.name}
+                        View all services →
                       </Link>
                     </li>
-                  ))}
-                  <li>
-                    <Link
-                      to="/services"
-                      onClick={closeMobileMenu}
-                      className="block text-sm font-medium text-gold-400"
-                    >
-                      View all services →
-                    </Link>
-                  </li>
-                </ul>
-              )}
+                  </ul>
+                </div>
+              </div>
             </li>
             <li>
               <NavLink to="/contact" className={linkClass} onClick={closeMobileMenu}>
