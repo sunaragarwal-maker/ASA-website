@@ -1,5 +1,14 @@
-import { ArrowRight, PhoneCall } from "lucide-react";
+import {
+  ArrowRight,
+  PhoneCall,
+  TrendingUp,
+  Users,
+  CalendarCheck2,
+  BriefcaseBusiness,
+} from "lucide-react";
 import { firm, stats } from "../content";
+
+const icons = { TrendingUp, Users, CalendarCheck2, BriefcaseBusiness };
 
 export default function Hero() {
   return (
@@ -49,17 +58,21 @@ export default function Hero() {
         </div>
 
         <div className="md:col-span-2 grid grid-cols-2 gap-4">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="rounded-xl border border-white/10 bg-white/5 px-5 py-6 text-center"
-            >
-              <div className="font-serif text-3xl text-gold-400">{s.value}</div>
-              <div className="mt-1 text-xs text-gray-300 uppercase tracking-wide">
-                {s.label}
+          {stats.map((s) => {
+            const Icon = icons[s.icon];
+            return (
+              <div
+                key={s.label}
+                className="rounded-xl border border-white/10 bg-white/5 px-5 py-6 text-center"
+              >
+                <Icon className="w-5 h-5 text-gold-500/70 mx-auto mb-2" />
+                <div className="font-serif text-3xl text-gold-400">{s.value}</div>
+                <div className="mt-1 text-xs text-gray-300 uppercase tracking-wide">
+                  {s.label}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

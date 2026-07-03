@@ -1,11 +1,11 @@
 import { Landmark } from "lucide-react";
-import { firm, navLinks } from "../content";
+import { firm, navLinks, usefulLinks } from "../content";
 
 export default function Footer() {
   return (
     <footer className="bg-navy-950 border-t border-white/10 pt-14 pb-8">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-10">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 text-white">
               <Landmark className="w-5 h-5 text-gold-500" />
@@ -25,6 +25,26 @@ export default function Footer() {
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a href={link.href} className="hover:text-gold-400 transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold text-gold-400 uppercase tracking-wide">
+              Useful Links
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-gray-400">
+              {usefulLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gold-400 transition-colors"
+                  >
                     {link.label}
                   </a>
                 </li>

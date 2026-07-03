@@ -3,24 +3,26 @@ export const firm = {
   name: "Anand Shyam & Associates",
   shortName: "ASA",
   tagline: "Trusted Financial Guidance, Built on Integrity",
-  founder: "CA Rajesh Kumar",
+  founder: "CA Anand Agarwal",
   founderCreds: "FCA, DISA",
   founderBio:
-    "CA Rajesh Kumar is a Fellow Chartered Accountant with over 20 years of experience advising individuals, startups, and established businesses on taxation, audit, and financial strategy. Having qualified from the Institute of Chartered Accountants of India (ICAI), he founded Anand Shyam & Associates with a simple goal: give every client the clarity and personal attention that larger firms often can't.",
+    "CA Anand Agarwal is a Fellow Chartered Accountant with over 20 years of experience advising individuals, startups, and established businesses on taxation, audit, and financial strategy. Having qualified from the Institute of Chartered Accountants of India (ICAI), he founded Anand Shyam & Associates with a simple goal: give every client the clarity and personal attention that larger firms often can't.",
+  founderMessage:
+    "When I started this firm, my goal went far beyond just filing returns and closing books. I wanted to build a practice where every client, whether an individual or a growing business, gets the same care and attention I'd want for my own finances. Over the years, that's meant building a team of specialists I trust completely, and staying close to every engagement personally. Your success is the only measure of ours that matters.",
   founderPhoto: null,
   yearFounded: 2005,
   phone: "+91 98765 43210",
-  email: "contact@kumarassociates.example",
+  email: "contact@anandshyamassociates.example",
   address: "3rd Floor, Ashoka Chambers, MG Road, Bengaluru, Karnataka 560001",
   hours: "Mon - Sat: 10:00 AM - 7:00 PM",
   mapQuery: "MG Road, Bengaluru, Karnataka 560001",
 };
 
 export const stats = [
-  { label: "Years of Experience", value: "20+" },
-  { label: "Clients Served", value: "500+" },
-  { label: "Timely Filings", value: "100%" },
-  { label: "Team of Experts", value: "8" },
+  { label: "Years of Experience", value: "20+", icon: "TrendingUp" },
+  { label: "Clients Served", value: "500+", icon: "Users" },
+  { label: "Timely Filings", value: "100%", icon: "CalendarCheck2" },
+  { label: "Team of Experts", value: "8", icon: "BriefcaseBusiness" },
 ];
 
 export const services = [
@@ -108,6 +110,19 @@ export const testimonials = [
     name: "Priya Menon",
     role: "Founder, Menon Foodworks",
   },
+];
+
+export const ctaBanner = {
+  heading: "Unlock Your Financial Success With Expert Advice",
+  subtext:
+    "Open the door to financial clarity and confidence. Book a consultation today and get tailored guidance for long-term success.",
+};
+
+export const usefulLinks = [
+  { label: "Income Tax e-Filing", href: "https://www.incometax.gov.in" },
+  { label: "GST Portal", href: "https://www.gst.gov.in" },
+  { label: "Ministry of Corporate Affairs", href: "https://www.mca.gov.in" },
+  { label: "EPFO", href: "https://www.epfindia.gov.in" },
 ];
 
 export const navLinks = [

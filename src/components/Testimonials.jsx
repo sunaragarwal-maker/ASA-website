@@ -1,6 +1,14 @@
 import { Quote } from "lucide-react";
 import { testimonials } from "../content";
 
+const initials = (name) =>
+  name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
 export default function Testimonials() {
   return (
     <section id="testimonials" className="py-24 bg-gray-50">
@@ -24,9 +32,16 @@ export default function Testimonials() {
               <p className="mt-4 text-gray-700 leading-relaxed grow">
                 "{t.quote}"
               </p>
-              <div className="mt-6 pt-4 border-t border-gray-100">
-                <p className="font-serif text-navy-950">{t.name}</p>
-                <p className="text-sm text-gray-500">{t.role}</p>
+              <div className="mt-6 pt-4 border-t border-gray-100 flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-navy-950 flex items-center justify-center shrink-0">
+                  <span className="text-gold-400 text-sm font-serif">
+                    {initials(t.name)}
+                  </span>
+                </div>
+                <div>
+                  <p className="font-serif text-navy-950">{t.name}</p>
+                  <p className="text-sm text-gray-500">{t.role}</p>
+                </div>
               </div>
             </div>
           ))}
