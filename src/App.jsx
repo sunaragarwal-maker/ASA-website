@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/ScrollToTop";
+import Logo from "./components/Logo";
 
 // Route-level code splitting: each page is its own chunk, so the initial
 // bundle only pays for Home + the app shell. This matters more now that
@@ -16,7 +17,7 @@ const DesignSystemPage = lazy(() => import("./pages/DesignSystemPage"));
 function RouteFallback() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center" aria-busy="true" aria-live="polite">
-      <div className="w-8 h-8 rounded-full border-2 border-gold-500 border-t-transparent animate-spin" />
+      <Logo size={40} className="animate-pulse motion-reduce:animate-none" />
       <span className="sr-only">Loading page…</span>
     </div>
   );

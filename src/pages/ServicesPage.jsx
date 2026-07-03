@@ -10,6 +10,7 @@ import IndustryGrid from "../components/IndustryGrid";
 import ProcessTimeline from "../components/ProcessTimeline";
 import WhyChooseUsGrid from "../components/WhyChooseUsGrid";
 import FAQAccordion from "../components/FAQAccordion";
+import BrandRing from "../components/BrandRing";
 
 export default function ServicesPage() {
   return (
@@ -30,6 +31,7 @@ export default function ServicesPage() {
             backgroundSize: "48px 48px",
           }}
         />
+        <BrandRing size={480} className="absolute -right-28 -top-28 opacity-[0.06]" />
         <Container className="relative">
           <Breadcrumbs tone="dark" items={[{ label: "Home", path: "/" }, { label: "Services", path: "/services" }]} />
           <div className="mt-8 max-w-2xl">

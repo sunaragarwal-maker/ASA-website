@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Landmark, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { firm } from "../content";
 import { serviceCategories } from "../servicesData";
 import MegaMenu from "./MegaMenu";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -77,7 +78,10 @@ export default function Navbar() {
           ${scrolled ? "py-3" : "py-4"}`}
       >
         <Link to="/" className="flex items-center gap-2 text-white group">
-          <Landmark className="w-6 h-6 text-gold-500 transition-transform duration-200 group-hover:scale-110 motion-reduce:group-hover:scale-100" />
+          <Logo
+            size={32}
+            className="transition-transform duration-200 group-hover:scale-110 motion-reduce:group-hover:scale-100"
+          />
           <span className="font-serif text-lg tracking-wide transition-colors group-hover:text-gold-100">
             {firm.name}
           </span>

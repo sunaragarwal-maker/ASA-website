@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { firm } from "../content";
+import BrandRing from "./BrandRing";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -25,8 +26,9 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" className="relative overflow-hidden py-24 bg-white">
+      <BrandRing tone="navy" size={320} className="absolute -right-16 -top-16 opacity-[0.04]" />
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-gold-700 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
             Get In Touch

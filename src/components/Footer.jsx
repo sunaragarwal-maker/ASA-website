@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
-import { Landmark } from "lucide-react";
 import { firm, navLinks, usefulLinks } from "../content";
+import Logo from "./Logo";
+import BrandRing from "./BrandRing";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-950 border-t border-white/10 pt-14 pb-8">
-      <div className="max-w-6xl mx-auto px-6">
+    <footer className="relative overflow-hidden bg-navy-950 border-t border-white/10 pt-14 pb-8">
+      <BrandRing size={360} className="absolute -right-20 -bottom-20 opacity-[0.05]" />
+
+      <div className="relative max-w-6xl mx-auto px-6">
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 text-white">
-              <Landmark className="w-5 h-5 text-gold-500" />
+              <Logo size={28} />
               <span className="font-serif text-lg">{firm.name}</span>
             </div>
             <p className="mt-4 text-sm text-gray-400 max-w-xs">

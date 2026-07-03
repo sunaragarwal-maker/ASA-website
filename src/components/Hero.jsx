@@ -8,6 +8,7 @@ import {
   BriefcaseBusiness,
 } from "lucide-react";
 import { firm, stats } from "../content";
+import BrandRing from "./BrandRing";
 
 const icons = { TrendingUp, Users, CalendarCheck2, BriefcaseBusiness };
 
@@ -21,10 +22,11 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
-            "linear-gradient(#c9a227 1px, transparent 1px), linear-gradient(90deg, #c9a227 1px, transparent 1px)",
+            "linear-gradient(var(--color-gold-500) 1px, transparent 1px), linear-gradient(90deg, var(--color-gold-500) 1px, transparent 1px)",
           backgroundSize: "48px 48px",
         }}
       />
+      <BrandRing size={520} className="absolute -right-32 -top-32 opacity-[0.06]" />
 
       <div className="relative max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-12 items-center">
         <div className="md:col-span-3">
