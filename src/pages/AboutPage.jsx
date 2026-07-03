@@ -1,15 +1,22 @@
-import { useEffect } from "react";
 import About from "../components/About";
 import FounderMessage from "../components/FounderMessage";
-import { firm } from "../content";
+import Seo from "../components/Seo";
+import Breadcrumbs from "../components/Breadcrumbs";
+import { Container } from "../components/ui";
 
 export default function AboutPage() {
-  useEffect(() => {
-    document.title = `About Us | ${firm.name}`;
-  }, []);
-
   return (
     <>
+      <Seo
+        title="About Us"
+        description="CA Anand Agarwal founded Anand Shyam & Associates on two decades of Chartered Accountancy experience in taxation, audit, and financial advisory."
+        path="/about"
+      />
+      <div className="pt-32 pb-4 bg-white">
+        <Container>
+          <Breadcrumbs items={[{ label: "Home", path: "/" }, { label: "About", path: "/about" }]} />
+        </Container>
+      </div>
       <About />
       <FounderMessage />
     </>

@@ -1,17 +1,17 @@
-import { useEffect } from "react";
 import Hero from "../components/Hero";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Testimonials from "../components/Testimonials";
 import CTABanner from "../components/CTABanner";
-import { firm } from "../content";
+import Seo from "../components/Seo";
 
 export default function Home() {
-  useEffect(() => {
-    document.title = `${firm.name} | Chartered Accountants`;
-  }, []);
-
   return (
     <>
+      <Seo
+        title="Home"
+        description="Anand Shyam & Associates is a Chartered Accountancy firm in Kolkata offering accounting, audit, taxation, GST, business registration, and advisory services."
+        path="/"
+      />
       <Hero />
       <WhyChooseUs />
       <Testimonials />

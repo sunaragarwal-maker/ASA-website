@@ -8,13 +8,13 @@ export default function Field({ label, htmlFor, required, error, helpText, class
     <div className={className}>
       <label className="block text-sm text-gray-600 mb-1.5" htmlFor={htmlFor}>
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
+        {required && <span className="text-red-600 ml-0.5">*</span>}
       </label>
       {children}
       {error ? (
-        <p className="mt-1.5 text-sm text-red-500">{error}</p>
+        <p className="mt-1.5 text-sm text-red-600">{error}</p>
       ) : (
-        helpText && <p className="mt-1.5 text-sm text-gray-400">{helpText}</p>
+        helpText && <p className="mt-1.5 text-sm text-gray-500">{helpText}</p>
       )}
     </div>
   );

@@ -28,12 +28,12 @@ export default function Contact() {
     <section id="contact" className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="max-w-2xl mx-auto text-center">
-          <p className="text-gold-600 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
+          <p className="text-gold-700 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
             Get In Touch
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-navy-950">
+          <h1 className="font-serif text-3xl md:text-4xl text-navy-950">
             Let's Discuss Your Financial Needs
-          </h2>
+          </h1>
           <p className="mt-4 text-gray-600">
             Reach out for a consultation, we typically respond within one
             business day.
@@ -82,7 +82,7 @@ export default function Contact() {
                   required
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-600"
                   placeholder="Your name"
                 />
               </div>
@@ -97,7 +97,7 @@ export default function Contact() {
                   required
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-600"
                   placeholder="you@example.com"
                 />
               </div>
@@ -113,7 +113,7 @@ export default function Contact() {
                 rows={5}
                 value={form.message}
                 onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-500"
+                className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-600"
                 placeholder="Tell us briefly about what you need help with..."
               />
             </div>

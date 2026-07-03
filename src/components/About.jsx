@@ -16,16 +16,16 @@ export default function About() {
         </div>
 
         <div className="md:col-span-3">
-          <p className="text-gold-600 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
+          <p className="text-gold-700 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
             About the Founder
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl text-navy-950">
+          <h1 className="font-serif text-3xl md:text-4xl text-navy-950">
             Two Decades of Dedicated Financial Expertise
-          </h2>
+          </h1>
           <p className="mt-6 text-gray-600 leading-relaxed">{firm.founderBio}</p>
 
           <div className="mt-8 flex items-start gap-3">
-            <GraduationCap className="w-6 h-6 text-gold-600 shrink-0 mt-0.5" />
+            <GraduationCap className="w-6 h-6 text-gold-700 shrink-0 mt-0.5" />
             <p className="text-gray-600">
               Qualified Chartered Accountant, Institute of Chartered Accountants
               of India (ICAI) &mdash; Diploma in Information Systems Audit (DISA).

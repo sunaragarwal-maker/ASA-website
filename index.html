@@ -2,10 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/ASA-website/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Anand Shyam &amp; Associates | Chartered Accountants</title>
-    <meta name="description" content="Anand Shyam & Associates is a Chartered Accountancy firm offering taxation, audit, GST, company registration, and financial advisory services." />
+    <meta name="theme-color" content="#0a1929" />
+    <meta name="robots" content="index, follow" />
+
+    <title>Anand Shyam &amp; Associates | Chartered Accountants in Kolkata</title>
+    <meta
+      name="description"
+      content="Anand Shyam & Associates is a Chartered Accountancy firm in Kolkata offering accounting, audit, taxation, GST, business registration, and advisory services."
+    />
+    <link rel="canonical" href="https://sunaragarwal-maker.github.io/ASA-website/" />
+
+    <!-- Open Graph (site-level default; JS cannot update these for a
+         client-only SPA in time for social-media crawlers, which don't
+         execute JavaScript — see DESIGN_SYSTEM.md / SEO notes) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Anand Shyam & Associates" />
+    <meta property="og:title" content="Anand Shyam & Associates | Chartered Accountants in Kolkata" />
+    <meta
+      property="og:description"
+      content="Accounting, audit, taxation, GST, business registration, and advisory services from a Chartered Accountancy firm in Kolkata."
+    />
+    <meta property="og:url" content="https://sunaragarwal-maker.github.io/ASA-website/" />
+    <meta property="og:locale" content="en_IN" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Anand Shyam & Associates | Chartered Accountants in Kolkata" />
+    <meta
+      name="twitter:description"
+      content="Accounting, audit, taxation, GST, business registration, and advisory services from a Chartered Accountancy firm in Kolkata."
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Anand Shyam & Associates",
+        "image": "https://sunaragarwal-maker.github.io/ASA-website/favicon.svg",
+        "url": "https://sunaragarwal-maker.github.io/ASA-website/",
+        "telephone": "+91-98310-00070",
+        "email": "anandshyamindia@gmail.com",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "4B Short Street, 3rd Floor",
+          "addressLocality": "Kolkata",
+          "addressRegion": "West Bengal",
+          "postalCode": "700017",
+          "addressCountry": "IN"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        "areaServed": "IN",
+        "founder": {
+          "@type": "Person",
+          "name": "CA Anand Agarwal"
+        }
+      }
+    </script>
+
+    <script type="text/javascript">
+      // Decode the path GitHub Pages' 404.html encoded as a query string,
+      // and rewrite it back to a real path before React Router mounts.
+      // Pairs with public/404.html. https://github.com/rafgraph/spa-github-pages
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
   </head>
   <body>
     <div id="root"></div>

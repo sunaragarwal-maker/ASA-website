@@ -26,7 +26,7 @@ const variants = {
     dark: "border border-white/25 text-white hover:border-gold-400 hover:text-gold-400",
   },
   ghost: {
-    light: "text-navy-950 hover:text-gold-600",
+    light: "text-navy-950 hover:text-gold-700",
     dark: "text-white hover:text-gold-400",
   },
 };
@@ -69,7 +69,7 @@ export default function Button({
     <Component
       className={`inline-flex items-center justify-center gap-2 rounded-full font-medium
         transition-colors duration-150
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-500 ${focusOffset[context]}
+        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 ${focusOffset[context]}
         disabled:opacity-50 disabled:pointer-events-none
         ${sizes[size]} ${variantClass} ${className}`}
       aria-busy={loading || undefined}

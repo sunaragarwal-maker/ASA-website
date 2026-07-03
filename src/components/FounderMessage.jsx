@@ -6,7 +6,7 @@ export default function FounderMessage() {
     <section className="py-24 bg-white">
       <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-14 items-center">
         <div className="md:col-span-3 md:order-1 order-2">
-          <p className="text-gold-600 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
+          <p className="text-gold-700 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
             A Note From the Founder
           </p>
           <h2 className="font-serif text-3xl md:text-4xl text-navy-950">
