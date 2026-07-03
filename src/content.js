@@ -11,11 +11,11 @@ export const firm = {
     "When I started this firm, my goal went far beyond just filing returns and closing books. I wanted to build a practice where every client, whether an individual or a growing business, gets the same care and attention I'd want for my own finances. Over the years, that's meant building a team of specialists I trust completely, and staying close to every engagement personally. Your success is the only measure of ours that matters.",
   founderPhoto: null,
   yearFounded: 2005,
-  phone: "+91 98765 43210",
-  email: "contact@anandshyamassociates.example",
-  address: "3rd Floor, Ashoka Chambers, MG Road, Bengaluru, Karnataka 560001",
+  phone: "+91 98310 00070",
+  email: "anandshyamindia@gmail.com",
+  address: "4B Short Street, 3rd Floor, Kolkata - 700017",
   hours: "Mon - Sat: 10:00 AM - 7:00 PM",
-  mapQuery: "MG Road, Bengaluru, Karnataka 560001",
+  mapQuery: "4B Short Street, Kolkata, West Bengal 700017",
 };
 
 export const stats = [
