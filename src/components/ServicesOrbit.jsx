@@ -26,8 +26,12 @@ function pointOn(angleDeg, radius) {
  * for the eight categories. Abstract on purpose: it isn't a literal
  * diagram of any specific category, just a visual echo of the page's own
  * "one firm for every number" line. Purely decorative — aria-hidden.
+ *
+ * Pass `icon` (a lucide-react component) to swap the center monogram for
+ * a specific category's icon — used on each category page so its hero
+ * shares this same illustration language instead of a plain icon tile.
  */
-export default function ServicesOrbit({ size = 320, className = "" }) {
+export default function ServicesOrbit({ size = 320, icon: CenterIcon, className = "" }) {
   return (
     <svg width={size} height={size} viewBox="0 0 300 300" className={className} aria-hidden="true">
       {SATELLITES.map((s, i) => {
@@ -51,17 +55,23 @@ export default function ServicesOrbit({ size = 320, className = "" }) {
       })}
       <circle cx={CENTER} cy={CENTER} r="70" fill="none" className="stroke-gold-500" strokeWidth="0.75" opacity="0.25" />
       <circle cx={CENTER} cy={CENTER} r="42" className="fill-navy-900 stroke-gold-500" strokeWidth="2" />
-      <text
-        x={CENTER}
-        y={CENTER + 9}
-        textAnchor="middle"
-        fontFamily="Georgia, serif"
-        fontSize="26"
-        fontWeight="600"
-        className="fill-gold-400"
-      >
-        ASA
-      </text>
+      {CenterIcon ? (
+        <g transform={`translate(${CENTER - 18}, ${CENTER - 18})`}>
+          <CenterIcon width={36} height={36} className="text-gold-400" />
+        </g>
+      ) : (
+        <text
+          x={CENTER}
+          y={CENTER + 9}
+          textAnchor="middle"
+          fontFamily="Georgia, serif"
+          fontSize="26"
+          fontWeight="600"
+          className="fill-gold-400"
+        >
+          ASA
+        </text>
+      )}
     </svg>
   );
 }

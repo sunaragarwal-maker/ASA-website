@@ -102,6 +102,18 @@ color was considered and rejected — two disciplined colors read as more
 premium than three, and the brief was to build a language *around* the
 existing mark, not widen the palette.
 
+`ServicesOrbit` also takes an optional `icon` prop, swapping the center
+"ASA" monogram for a specific lucide icon — `ServiceCategoryPage`'s hero
+uses this so every category page shares the Services landing page's
+illustration language instead of a plain icon-in-a-circle.
+
+`BenefitsPanel.jsx` is the "Benefits" section on `ServiceCategoryPage` —
+a dark navy panel inset in an otherwise-light section, not another white
+`IconCard` grid. That page already has two of those (Individual Services,
+`WhyChooseUsGrid`); a third back-to-back read as the same section
+repeated. Reuses the same icon/heading grammar as `WhyChooseUs` on Home,
+just boxed rather than full-bleed.
+
 ## Components
 
 | Component | Replaces |

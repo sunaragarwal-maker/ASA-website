@@ -1,19 +1,22 @@
 import { useEffect } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { ArrowRight, PhoneCall } from "lucide-react";
+import { ArrowRight, PhoneCall, BadgeCheck } from "lucide-react";
 import { getServiceBySlug } from "../servicesData";
 import { getIcon } from "../iconRegistry";
 import { firm } from "../content";
-import { Container, Section, SectionHeading, Button, Eyebrow, Heading } from "../components/ui";
+import { Container, Section, SectionHeading, Button, Eyebrow, Heading, Card, TextLink } from "../components/ui";
 import Seo from "../components/Seo";
 import Breadcrumbs from "../components/Breadcrumbs";
 import IconCard from "../components/IconCard";
-import BrandRing from "../components/BrandRing";
+import BenefitsPanel from "../components/BenefitsPanel";
 import SealPattern from "../components/SealPattern";
+import ServicesOrbit from "../components/ServicesOrbit";
 import IndustryGrid from "../components/IndustryGrid";
 import ProcessTimeline from "../components/ProcessTimeline";
 import WhyChooseUsGrid from "../components/WhyChooseUsGrid";
 import FAQAccordion from "../components/FAQAccordion";
+
+const SITE_URL = "https://sunaragarwal-maker.github.io/ASA-website";
 
 export default function ServiceCategoryPage() {
   const { slug } = useParams();
@@ -29,12 +32,29 @@ export default function ServiceCategoryPage() {
 
   const Icon = getIcon(category.icon);
 
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: category.name,
+    description: category.metaDescription,
+    provider: {
+      "@type": "ProfessionalService",
+      name: firm.name,
+      telephone: firm.phone,
+      email: firm.email,
+      address: firm.address,
+    },
+    areaServed: "IN",
+    url: `${SITE_URL}/services/${category.slug}`,
+  };
+
   return (
     <div>
       <Seo
         title={category.metaTitle}
         description={category.metaDescription}
         path={`/services/${category.slug}`}
+        jsonLd={serviceJsonLd}
       />
 
       {/* HERO */}
@@ -67,11 +87,8 @@ export default function ServiceCategoryPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative md:col-span-2 flex items-center justify-center">
-              <BrandRing size={320} className="absolute opacity-[0.1]" />
-              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border border-gold-500/25 bg-white/5 flex items-center justify-center">
-                <Icon className="w-16 h-16 md:w-20 md:h-20 text-gold-500/60" aria-hidden="true" />
-              </div>
+            <div className="hidden md:flex md:col-span-2 items-center justify-center">
+              <ServicesOrbit size={300} icon={Icon} />
             </div>
           </div>
         </Container>
@@ -79,9 +96,26 @@ export default function ServiceCategoryPage() {
 
       {/* OVERVIEW */}
       <Section tone="light">
-        <div className="max-w-3xl">
-          <SectionHeading align="left" eyebrow="Overview" title={`How We Help With ${category.name}`} />
-          <p className="mt-6 text-ink-muted leading-relaxed text-lg">{category.overview}</p>
+        <div className="grid lg:grid-cols-5 gap-12">
+          <div className="lg:col-span-3">
+            <SectionHeading align="left" eyebrow="Overview" title={`How We Help With ${category.name}`} />
+            <p className="mt-6 text-ink-muted leading-relaxed text-lg">{category.overview}</p>
+          </div>
+          <div className="lg:col-span-2">
+            <Card tone="muted" padding="p-6">
+              <p className="text-sm font-semibold text-navy-950 uppercase tracking-wide mb-4">
+                What&rsquo;s Covered
+              </p>
+              <ul className="space-y-3">
+                {category.subServices.slice(0, 5).map((service) => (
+                  <li key={service.title} className="flex items-start gap-2.5 text-sm text-ink-muted">
+                    <BadgeCheck className="w-4 h-4 text-gold-700 shrink-0 mt-0.5" aria-hidden="true" />
+                    {service.title}
+                  </li>
+                ))}
+              </ul>
+            </Card>
+          </div>
         </div>
       </Section>
 
@@ -98,10 +132,8 @@ export default function ServiceCategoryPage() {
       {/* BENEFITS */}
       <Section tone="light">
         <SectionHeading eyebrow="Outcomes" title="What You Actually Get" />
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {category.benefits.map((benefit) => (
-            <IconCard key={benefit.title} icon={benefit.icon} title={benefit.title} description={benefit.description} />
-          ))}
+        <div className="mt-14">
+          <BenefitsPanel benefits={category.benefits} />
         </div>
       </Section>
 
@@ -119,7 +151,11 @@ export default function ServiceCategoryPage() {
 
       {/* PROCESS */}
       <Section tone="light">
-        <SectionHeading eyebrow="How It Works" title="Our Process" />
+        <SectionHeading
+          eyebrow="How It Works"
+          title="Our Process"
+          subtext={`From your first call about ${category.name.toLowerCase()} to ongoing support after delivery — here's exactly what to expect.`}
+        />
         <div className="mt-14">
           <ProcessTimeline />
         </div>
@@ -138,6 +174,13 @@ export default function ServiceCategoryPage() {
         <SectionHeading eyebrow="Questions" title="Frequently Asked Questions" align="left" />
         <div className="mt-10 max-w-3xl">
           <FAQAccordion faqs={category.faqs} />
+          <p className="mt-6 text-sm text-ink-muted">
+            Didn&rsquo;t find your answer?{" "}
+            <TextLink as={Link} to="/contact">
+              Ask us directly
+            </TextLink>{" "}
+            — most questions take one short call to settle.
+          </p>
         </div>
       </Section>
 
@@ -161,6 +204,9 @@ export default function ServiceCategoryPage() {
               {firm.phone}
             </Button>
           </div>
+          <p className="mt-4 text-sm text-ink-inverted-muted">
+            Free initial consultation &middot; No obligation &middot; We respond within one business day
+          </p>
         </Container>
       </section>
     </div>
