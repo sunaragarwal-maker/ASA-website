@@ -89,6 +89,13 @@ few high-repetition spots rather than scattered everywhere:
   white-bordered tile (`rounded-3xl border-white/10`); now a gold-ringed
   circle, matching the medallion language instead of reading as a
   generic SaaS card.
+- **`ServicesOrbit.jsx`** — the Services landing hero's illustration: the
+  logo's own ring-and-monogram at the center, with eight satellite marks
+  radiating out for the eight practice areas (deliberately irregular
+  angles/radii, not a uniform clock face). Abstract, not a literal
+  diagram — a visual echo of that page's "one firm for every number"
+  line, in the same vocabulary as everything else here rather than a
+  one-off illustration style.
 
 Deliberately unchanged: the navy/gold palette itself. A third accent
 color was considered and rejected — two disciplined colors read as more
