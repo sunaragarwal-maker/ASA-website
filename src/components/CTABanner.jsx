@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, KeyRound } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { ctaBanner } from "../content";
 import { Container, Button, Heading } from "./ui";
 
@@ -9,7 +9,7 @@ export default function CTABanner() {
       <Container className="flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="text-center md:text-left">
           <Heading level={2} className="flex items-center justify-center md:justify-start gap-2">
-            <KeyRound className="w-6 h-6 shrink-0" aria-hidden="true" />
+            <MessageCircle className="w-6 h-6 shrink-0" aria-hidden="true" />
             {ctaBanner.heading}
           </Heading>
           <p className="mt-4 text-navy-900/80 max-w-xl">{ctaBanner.subtext}</p>

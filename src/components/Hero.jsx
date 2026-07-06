@@ -52,6 +52,9 @@ export default function Hero() {
               {firm.phone}
             </Button>
           </div>
+          <p className="mt-4 text-sm text-ink-inverted-muted">
+            Free initial consultation &middot; No obligation &middot; We respond within one business day
+          </p>
         </div>
 
         <div className="md:col-span-2 grid grid-cols-2 gap-4">

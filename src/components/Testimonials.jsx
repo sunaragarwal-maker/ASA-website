@@ -4,7 +4,7 @@ import { Section, SectionHeading, Card, Avatar } from "./ui";
 
 export default function Testimonials() {
   return (
-    <Section id="testimonials" tone="alt">
+    <Section id="testimonials" tone="light">
       <SectionHeading eyebrow="Client Feedback" title="What Our Clients Say" />
 
       <div className="mt-14 grid md:grid-cols-3 gap-6">

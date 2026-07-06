@@ -119,9 +119,9 @@ export const testimonials = [
 ];
 
 export const ctaBanner = {
-  heading: "Unlock Your Financial Success With Expert Advice",
+  heading: "Have a Question? Let's Start With a Conversation.",
   subtext:
-    "Open the door to financial clarity and confidence. Book a consultation today and get tailored guidance for long-term success.",
+    "No sales pitch, no obligation — tell us what's going on and we'll tell you plainly what applies to you and what it costs.",
 };
 
 export const usefulLinks = [
