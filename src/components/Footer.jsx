@@ -2,13 +2,14 @@ import { Link } from "react-router-dom";
 import { firm, navLinks, usefulLinks } from "../content";
 import Logo from "./Logo";
 import BrandRing from "./BrandRing";
+import { Container, Divider } from "./ui";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-navy-950 border-t border-white/10 pt-14 pb-8">
+    <footer className="relative overflow-hidden bg-navy-950 border-t border-border-dark pt-14 pb-8">
       <BrandRing size={360} className="absolute -right-20 -bottom-20 opacity-[0.05]" />
 
-      <div className="relative max-w-6xl mx-auto px-6">
+      <Container className="relative">
         <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 text-white">
@@ -68,10 +69,13 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-6 border-t border-white/10 text-center text-xs text-gray-500">
-          &copy; {new Date().getFullYear()} {firm.name}. All rights reserved.
+        <div className="mt-12 pt-6">
+          <Divider tone="dark" />
+          <p className="mt-6 text-center text-xs text-gray-500">
+            &copy; {new Date().getFullYear()} {firm.name}. All rights reserved.
+          </p>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

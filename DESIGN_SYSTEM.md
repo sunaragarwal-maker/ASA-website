@@ -14,19 +14,25 @@ token and component variant below, including a working dark-mode toggle.
 
 ## Status
 
-The Services ecosystem (`ServicesPage`, `ServiceCategoryPage`, and every
-component under `src/components/` built for it) is built on these primitives
-— `Container`, `Section`, `SectionHeading`, `Button`, `Card` via `IconCard`.
-That's the intended pattern going forward: new pages are assembled from
-`src/components/ui/`, not hand-written utility strings.
+Every page and component in the site — the Services ecosystem
+(`ServicesPage`, `ServiceCategoryPage`, and their supporting components) and
+the original marketing components (`Hero`, `About`, `WhyChooseUs`,
+`Testimonials`, `FounderMessage`, `CTABanner`, `Contact`, `Footer`, `Navbar`)
+— is now built on the primitives in `src/components/ui/`. The two halves of
+the site no longer look like two different products: same `Eyebrow`,
+`Heading`, `Button`, `Card`, `IconTile` treatment everywhere. That's the
+pattern going forward — new pages are assembled from `src/components/ui/`,
+not hand-written utility strings.
 
-`Hero`, `About`, `WhyChooseUs`, `Testimonials`, `FounderMessage`, `CTABanner`,
-`Contact`, `Footer`, `Navbar` predate the design system and were **not**
-migrated onto the primitives — they still hand-write the eyebrow/card/button
-patterns the system replaces. They did get touched for real bugs found in a
-later accessibility pass (see below), but that was a color-value fix in
-place, not a migration onto `Eyebrow`/`Card`/`Button`. Migrating them is
-still the natural next step.
+Two homepage additions from that same pass: `ServicesTeaser` (a 4-of-8
+preview of the Services ecosystem, so a first-time visitor sees what the
+firm does before being asked to book a consultation) and `FounderTeaser` (a
+condensed founder-credibility block, distinct from the full letter in
+`FounderMessage` which stays on `/about` — the two don't repeat the same
+paragraph). `Contact` also gained a real Google Maps embed built from
+`firm.mapQuery` (previously defined in `content.js` and never rendered), and
+unknown routes now render a branded `NotFoundPage` instead of silently
+redirecting to `/`.
 
 ## Tokens
 
@@ -126,15 +132,14 @@ is not.
 
 ## Known follow-ups
 
-- Migrate `Hero`, `About`, `WhyChooseUs`, `Testimonials`, `FounderMessage`,
-  `CTABanner`, `Contact`, `Footer`, `Navbar` onto these primitives.
-- `Hero.jsx` still hardcodes `#c9a227` in a raw CSS `linear-gradient` string
-  (the new Services hero sections reference `var(--color-gold-500)`
-  instead) — fix once `Hero.jsx` itself is touched.
 - Dark mode is real for the primitives (`Card`, `Input`/`Textarea`, `Badge`,
   `Section`) but not for page copy, which still uses raw `text-gray-*`
   utilities with no `dark:` counterpart. Full page dark mode needs a second
   pass through content text colors if it's ever activated.
+- The Google Maps embed in `Contact.jsx` uses `firm.mapQuery` (a plain
+  address string) via the no-API-key `/maps?q=...&output=embed` endpoint —
+  fine for one office, but if the firm ever has multiple locations this
+  should move to something more structured than a single content field.
 
 ## Services ecosystem architecture (routing, SEO)
 

@@ -1,5 +1,7 @@
 import Hero from "../components/Hero";
+import ServicesTeaser from "../components/ServicesTeaser";
 import WhyChooseUs from "../components/WhyChooseUs";
+import FounderTeaser from "../components/FounderTeaser";
 import Testimonials from "../components/Testimonials";
 import CTABanner from "../components/CTABanner";
 import Seo from "../components/Seo";
@@ -13,7 +15,9 @@ export default function Home() {
         path="/"
       />
       <Hero />
+      <ServicesTeaser />
       <WhyChooseUs />
+      <FounderTeaser />
       <Testimonials />
       <CTABanner />
     </>

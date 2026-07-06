@@ -18,6 +18,12 @@ export const firm = {
   mapQuery: "4B Short Street, Kolkata, West Bengal 700017",
 };
 
+firm.founderInitials = firm.founder
+  .replace(/^CA\s+/, "")
+  .split(" ")
+  .map((w) => w[0])
+  .join("");
+
 export const stats = [
   { label: "Years of Experience", value: "20+", icon: "TrendingUp" },
   { label: "Clients Served", value: "500+", icon: "Users" },

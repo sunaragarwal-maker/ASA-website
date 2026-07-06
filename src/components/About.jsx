@@ -1,13 +1,18 @@
-import { GraduationCap, Landmark } from "lucide-react";
+import { GraduationCap } from "lucide-react";
 import { firm } from "../content";
+import BrandRing from "./BrandRing";
+import { Section, Eyebrow, Heading } from "./ui";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-14 items-center">
+    <Section tone="light">
+      <div className="grid md:grid-cols-5 gap-14 items-center">
         <div className="md:col-span-2">
           <div className="aspect-[4/5] rounded-2xl bg-navy-900 flex items-center justify-center relative overflow-hidden">
-            <Landmark className="w-20 h-20 text-gold-500/40" />
+            <BrandRing size={280} className="absolute opacity-[0.14]" />
+            <span className="relative font-serif text-6xl text-gold-500/70" aria-hidden="true">
+              {firm.founderInitials}
+            </span>
             <div className="absolute bottom-0 inset-x-0 bg-navy-950/80 px-6 py-4">
               <p className="text-white font-serif text-lg">{firm.founder}</p>
               <p className="text-gold-400 text-sm">{firm.founderCreds} &middot; Founder</p>
@@ -16,23 +21,19 @@ export default function About() {
         </div>
 
         <div className="md:col-span-3">
-          <p className="text-gold-700 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
-            About the Founder
-          </p>
-          <h1 className="font-serif text-3xl md:text-4xl text-navy-950">
-            Two Decades of Dedicated Financial Expertise
-          </h1>
-          <p className="mt-6 text-gray-600 leading-relaxed">{firm.founderBio}</p>
+          <Eyebrow>About the Founder</Eyebrow>
+          <Heading level={1}>Two Decades of Dedicated Financial Expertise</Heading>
+          <p className="mt-6 text-ink-muted leading-relaxed">{firm.founderBio}</p>
 
           <div className="mt-8 flex items-start gap-3">
-            <GraduationCap className="w-6 h-6 text-gold-700 shrink-0 mt-0.5" />
-            <p className="text-gray-600">
+            <GraduationCap className="w-6 h-6 text-gold-700 shrink-0 mt-0.5" aria-hidden="true" />
+            <p className="text-ink-muted">
               Qualified Chartered Accountant, Institute of Chartered Accountants
               of India (ICAI) &mdash; Diploma in Information Systems Audit (DISA).
             </p>
           </div>
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

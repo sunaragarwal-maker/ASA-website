@@ -5,6 +5,7 @@ import { firm } from "../content";
 import { serviceCategories } from "../servicesData";
 import MegaMenu from "./MegaMenu";
 import Logo from "./Logo";
+import { Button } from "./ui";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -129,14 +130,9 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <Link
-          to="/contact"
-          className="hidden md:inline-flex items-center rounded-full bg-gold-500 px-5 py-2 text-sm font-medium text-navy-950
-            transition-all duration-200 hover:bg-gold-400 hover:shadow-md hover:-translate-y-px motion-reduce:hover:translate-y-0
-            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2 focus-visible:ring-offset-navy-950"
-        >
+        <Button as={Link} to="/contact" size="sm" context="dark" className="hidden md:inline-flex">
           Book a Consultation
-        </Link>
+        </Button>
 
         <button
           className="md:hidden text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 rounded-sm"
@@ -215,13 +211,16 @@ export default function Navbar() {
               </NavLink>
             </li>
           </ul>
-          <Link
+          <Button
+            as={Link}
             to="/contact"
             onClick={closeMobileMenu}
-            className="mt-4 inline-flex items-center rounded-full bg-gold-500 px-5 py-2 text-sm font-medium text-navy-950"
+            size="sm"
+            context="dark"
+            className="mt-4"
           >
             Book a Consultation
-          </Link>
+          </Button>
         </div>
       )}
     </header>

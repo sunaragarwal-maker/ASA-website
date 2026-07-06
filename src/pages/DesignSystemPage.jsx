@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Award, Landmark, Mail, Phone, ShieldCheck } from "lucide-react";
 import {
   Container,
-  Section,
   Divider,
   Eyebrow,
   Heading,

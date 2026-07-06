@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import ScrollToTop from "./components/ScrollToTop";
 import Logo from "./components/Logo";
@@ -13,6 +13,7 @@ const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const ServiceCategoryPage = lazy(() => import("./pages/ServiceCategoryPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const DesignSystemPage = lazy(() => import("./pages/DesignSystemPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function RouteFallback() {
   return (
@@ -37,7 +38,7 @@ function App() {
             <Route path="contact" element={<ContactPage />} />
             {/* Internal reference only — deliberately not in navLinks. */}
             <Route path="design-system" element={<DesignSystemPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Suspense>

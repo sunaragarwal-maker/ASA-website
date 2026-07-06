@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 import { firm } from "../content";
 import BrandRing from "./BrandRing";
+import { Section, SectionHeading, Card, IconTile, Field, Input, Textarea, Button } from "./ui";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -26,41 +27,35 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative overflow-hidden py-24 bg-white">
+    <Section id="contact" tone="light" className="relative overflow-hidden">
       <BrandRing tone="navy" size={320} className="absolute -right-16 -top-16 opacity-[0.04]" />
-      <div className="relative max-w-6xl mx-auto px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-gold-700 tracking-[0.2em] text-xs font-semibold uppercase mb-3">
-            Get In Touch
-          </p>
-          <h1 className="font-serif text-3xl md:text-4xl text-navy-950">
-            Let's Discuss Your Financial Needs
-          </h1>
-          <p className="mt-4 text-gray-600">
-            Reach out for a consultation, we typically respond within one
-            business day.
-          </p>
-        </div>
+      <div className="relative">
+        <SectionHeading
+          eyebrow="Get In Touch"
+          title="Let's Discuss Your Financial Needs"
+          subtext="Reach out for a consultation, we typically respond within one business day."
+        />
 
         <div className="mt-14 grid lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2 space-y-5">
             {infoItems.map((item) => {
-              const Icon = item.icon;
               const content = (
-                <div className="flex items-start gap-4 rounded-xl border border-gray-100 bg-gray-50 p-5">
-                  <div className="w-10 h-10 rounded-lg bg-navy-950 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-gold-400" />
-                  </div>
+                <Card tone="muted" padding="p-5" className="flex items-start gap-4">
+                  <IconTile icon={item.icon} size="sm" />
                   <div>
                     <p className="text-xs uppercase tracking-wide text-gray-500">
                       {item.label}
                     </p>
                     <p className="mt-1 text-navy-950 font-medium">{item.value}</p>
                   </div>
-                </div>
+                </Card>
               );
               return item.href ? (
-                <a key={item.label} href={item.href}>
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2"
+                >
                   {content}
                 </a>
               ) : (
@@ -69,66 +64,62 @@ export default function Contact() {
             })}
           </div>
 
-          <form
-            onSubmit={handleSubmit}
-            className="lg:col-span-3 rounded-2xl border border-gray-100 bg-gray-50 p-8 space-y-5"
-          >
-            <div className="grid sm:grid-cols-2 gap-5">
-              <div>
-                <label className="block text-sm text-gray-600 mb-1.5" htmlFor="name">
-                  Full Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  required
-                  value={form.name}
-                  onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-600"
-                  placeholder="Your name"
-                />
+          <form onSubmit={handleSubmit} className="lg:col-span-3">
+            <Card tone="muted" padding="p-8" className="space-y-5">
+              <div className="grid sm:grid-cols-2 gap-5">
+                <Field label="Full Name" htmlFor="name">
+                  <Input
+                    id="name"
+                    name="name"
+                    required
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                  />
+                </Field>
+                <Field label="Email Address" htmlFor="email">
+                  <Input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                  />
+                </Field>
               </div>
-              <div>
-                <label className="block text-sm text-gray-600 mb-1.5" htmlFor="email">
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
+              <Field label="Message" htmlFor="message">
+                <Textarea
+                  id="message"
+                  name="message"
                   required
-                  value={form.email}
+                  rows={5}
+                  value={form.message}
                   onChange={handleChange}
-                  className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-600"
-                  placeholder="you@example.com"
+                  placeholder="Tell us briefly about what you need help with..."
                 />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm text-gray-600 mb-1.5" htmlFor="message">
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                required
-                rows={5}
-                value={form.message}
-                onChange={handleChange}
-                className="w-full rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-navy-950 focus:outline-none focus:ring-2 focus:ring-gold-600"
-                placeholder="Tell us briefly about what you need help with..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="inline-flex items-center gap-2 rounded-full bg-navy-950 px-6 py-3 font-medium text-white hover:bg-navy-800 transition-colors"
-            >
-              Send Message
-              <Send className="w-4 h-4" />
-            </button>
+              </Field>
+              <Button type="submit" variant="dark">
+                Send Message
+                <Send className="w-4 h-4" />
+              </Button>
+            </Card>
           </form>
         </div>
+
+        <div className="mt-10 rounded-2xl border border-border overflow-hidden shadow-sm">
+          <iframe
+            title={`Map showing ${firm.name}'s office location`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(firm.mapQuery)}&output=embed`}
+            width="100%"
+            height="320"
+            style={{ border: 0 }}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }

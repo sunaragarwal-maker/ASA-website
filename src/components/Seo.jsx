@@ -20,7 +20,7 @@ function upsertMeta(selector, create) {
  * bots do not run JS and will only ever see index.html's static OG tags —
  * see DESIGN_SYSTEM.md for that tradeoff.
  */
-export default function Seo({ title, description, path = "/", jsonLd }) {
+export default function Seo({ title, description, path = "/", jsonLd, noindex = false }) {
   useEffect(() => {
     const fullTitle = `${title} | Anand Shyam & Associates`;
     document.title = fullTitle;
@@ -31,6 +31,13 @@ export default function Seo({ title, description, path = "/", jsonLd }) {
       return m;
     });
     descMeta.content = description;
+
+    const robotsMeta = upsertMeta('meta[name="robots"]', () => {
+      const m = document.createElement("meta");
+      m.name = "robots";
+      return m;
+    });
+    robotsMeta.content = noindex ? "noindex, follow" : "index, follow";
 
     const canonical = upsertMeta('link[rel="canonical"]', () => {
       const l = document.createElement("link");
@@ -71,7 +78,7 @@ export default function Seo({ title, description, path = "/", jsonLd }) {
     return () => {
       if (script) script.remove();
     };
-  }, [title, description, path, jsonLd]);
+  }, [title, description, path, jsonLd, noindex]);
 
   return null;
 }

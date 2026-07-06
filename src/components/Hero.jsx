@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { firm, stats } from "../content";
 import BrandRing from "./BrandRing";
+import { Container, Eyebrow, Heading, Button } from "./ui";
 
 const icons = { TrendingUp, Users, CalendarCheck2, BriefcaseBusiness };
 
@@ -28,14 +29,14 @@ export default function Hero() {
       />
       <BrandRing size={520} className="absolute -right-32 -top-32 opacity-[0.06]" />
 
-      <div className="relative max-w-6xl mx-auto px-6 grid md:grid-cols-5 gap-12 items-center">
+      <Container className="relative grid md:grid-cols-5 gap-12 items-center">
         <div className="md:col-span-3">
-          <p className="text-gold-400 tracking-[0.2em] text-xs font-medium uppercase mb-4">
+          <Eyebrow tone="onDark">
             Chartered Accountants &middot; Since {firm.yearFounded}
-          </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-white">
+          </Eyebrow>
+          <Heading level={1} tone="onDark">
             {firm.tagline}
-          </h1>
+          </Heading>
           <p className="mt-6 text-lg text-gray-300 max-w-xl">
             {firm.name} provides expert taxation, audit, and financial advisory
             services to individuals and businesses, delivered with the
@@ -43,20 +44,20 @@ export default function Hero() {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gold-500 px-6 py-3 font-medium text-navy-950 hover:bg-gold-400 transition-colors"
-            >
+            <Button as={Link} to="/contact" size="lg">
               Book a Consultation
               <ArrowRight className="w-4 h-4" />
-            </Link>
-            <a
+            </Button>
+            <Button
+              as="a"
               href={`tel:${firm.phone.replace(/\s/g, "")}`}
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 font-medium text-white hover:border-gold-400 hover:text-gold-400 transition-colors"
+              variant="outline"
+              context="dark"
+              size="lg"
             >
               <PhoneCall className="w-4 h-4" />
               {firm.phone}
-            </a>
+            </Button>
           </div>
         </div>
 
@@ -68,7 +69,7 @@ export default function Hero() {
                 key={s.label}
                 className="rounded-xl border border-white/10 bg-white/5 px-5 py-6 text-center"
               >
-                <Icon className="w-5 h-5 text-gold-500/70 mx-auto mb-2" />
+                <Icon className="w-5 h-5 text-gold-500/70 mx-auto mb-2" aria-hidden="true" />
                 <div className="font-serif text-3xl text-gold-400">{s.value}</div>
                 <div className="mt-1 text-xs text-gray-300 uppercase tracking-wide">
                   {s.label}
@@ -77,7 +78,7 @@ export default function Hero() {
             );
           })}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
