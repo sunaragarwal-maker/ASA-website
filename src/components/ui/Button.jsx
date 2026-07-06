@@ -68,7 +68,7 @@ export default function Button({
   return (
     <Component
       className={`inline-flex items-center justify-center gap-2 rounded-full font-medium
-        transition-colors duration-150
+        transition-all duration-150 active:scale-[0.97] motion-reduce:active:scale-100
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 ${focusOffset[context]}
         disabled:opacity-50 disabled:pointer-events-none
         ${sizes[size]} ${variantClass} ${className}`}

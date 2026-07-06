@@ -146,3 +146,15 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Scroll-reveal (SectionHeading's useInView) only triggers once an
+   element has actually crossed the viewport during a real scroll.
+   Printing renders the whole document at once with no such event, so
+   without this override, any section the user hadn't scrolled to yet
+   would print blank. */
+@media print {
+  * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -7,6 +7,18 @@
     <meta name="theme-color" content="#0a1929" />
     <meta name="robots" content="index, follow" />
 
+    <!-- Source Serif 4 (headings) + Inter (body) — index.css's @theme block
+         has referenced these by name from the start, but nothing ever
+         loaded them, so the whole site was silently rendering on Georgia
+         and system-ui fallbacks. Only the weights actually used in
+         Tailwind classes (400/500/600) are fetched. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Anand Shyam &amp; Associates | Chartered Accountants in Kolkata</title>
     <meta
       name="description"

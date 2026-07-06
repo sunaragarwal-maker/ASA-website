@@ -34,6 +34,40 @@ paragraph). `Contact` also gained a real Google Maps embed built from
 unknown routes now render a branded `NotFoundPage` instead of silently
 redirecting to `/`.
 
+## Fonts are loaded in index.html, not just referenced in CSS
+
+`--font-serif`/`--font-sans` in the `@theme` block below named "Source
+Serif 4" and "Inter" from the start, but for a long stretch nothing ever
+loaded them — no `<link>`, no `@font-face`, no `@import` anywhere. The
+whole site silently rendered on the Georgia/system-ui fallbacks the
+entire time; `document.fonts.check()` gives false positives for this
+(returns `true` even for a made-up font name in some engines), so
+verifying font loading needs an actual canvas text-width comparison
+against a fallback, not that API. Fixed via a Google Fonts `<link>` in
+`index.html` — only the weights actually used in Tailwind classes
+(400/500/600) are fetched.
+
+## Scroll-reveal (`useInView`)
+
+`SectionHeading` fades and rises into place the first time it scrolls
+into view, via `src/hooks/useInView.js` — since virtually every section
+on the site opens with `SectionHeading`, this one hook gives the whole
+site scroll motion without touching every page. Two things make it
+robust rather than just "usually works":
+
+- A scroll-position safety net (not a blind timer) force-reveals an
+  element if its bottom edge has already passed above the viewport
+  without ever triggering — found by testing fast/jumpy scrolling
+  (Page Down, scrollbar dragging), which can skip an element's transient
+  intersection entirely before `IntersectionObserver` catches it. A
+  timer-based fallback was tried first and rejected: a delay counted
+  from mount would reveal far-below-the-fold content a couple of
+  seconds after page load regardless of scroll position, defeating the
+  point.
+- A `@media print` override in `index.css` forces full opacity/no
+  transform, so printing before scrolling through the whole page can't
+  leave later sections blank.
+
 ## Tokens
 
 **Color** — two 11/10-step brand ramps (`navy-50…950`, `gold-50…900`), plus
@@ -212,6 +246,20 @@ is not.
   address string) via the no-API-key `/maps?q=...&output=embed` endpoint —
   fine for one office, but if the firm ever has multiple locations this
   should move to something more structured than a single content field.
+- `firm.founderPhoto` in `content.js` is `null`; `About.jsx` now checks it
+  and will render a real `<img>` the moment a photo is supplied, but no
+  real photograph exists anywhere on the site today — every "portrait" is
+  the initials-in-a-ring placeholder. This is a real, acknowledged limit
+  of an all-illustration identity: a genuine human photo (the founder, the
+  office) would do more for trust than any amount of further icon/motif
+  polish. Worth prioritizing over further visual refinement once a photo
+  is available.
+- `Contact.jsx`'s form validates client-side and gives a real success/
+  fallback message, but still ultimately hands off via a `mailto:` link —
+  there's no backend to actually receive a submission, so a visitor
+  without a configured email client has no way to send it besides copying
+  the fallback address shown. Fine for a static site with no server, but
+  the honest ceiling of that approach.
 
 ## Services ecosystem architecture (routing, SEO)
 
