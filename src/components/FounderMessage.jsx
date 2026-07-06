@@ -4,7 +4,7 @@ import { Section, Eyebrow, Heading, Card } from "./ui";
 
 export default function FounderMessage() {
   return (
-    <Section tone="light">
+    <Section tone="alt">
       <div className="grid md:grid-cols-5 gap-14 items-center">
         <div className="md:col-span-3 md:order-1 order-2">
           <Eyebrow>A Note From the Founder</Eyebrow>

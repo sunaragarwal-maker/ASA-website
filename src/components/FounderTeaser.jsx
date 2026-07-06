@@ -13,7 +13,7 @@ import { Section, Eyebrow, Heading, Button } from "./ui";
  */
 export default function FounderTeaser() {
   return (
-    <Section tone="alt">
+    <Section tone="light">
       <div className="grid md:grid-cols-5 gap-14 items-center">
         <div className="md:col-span-2 flex md:justify-center">
           <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-navy-900 flex items-center justify-center shrink-0">
