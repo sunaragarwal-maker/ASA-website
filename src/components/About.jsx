@@ -1,4 +1,3 @@
-import { GraduationCap } from "lucide-react";
 import { firm } from "../content";
 import BrandRing from "./BrandRing";
 import { Section, Eyebrow, Heading } from "./ui";
@@ -21,17 +20,9 @@ export default function About() {
         </div>
 
         <div className="md:col-span-3">
-          <Eyebrow>About the Founder</Eyebrow>
-          <Heading level={1}>Two Decades of Dedicated Financial Expertise</Heading>
+          <Eyebrow>Our Story</Eyebrow>
+          <Heading level={2}>From One Client&rsquo;s Trust to Five Hundred</Heading>
           <p className="mt-6 text-ink-muted leading-relaxed">{firm.founderBio}</p>
-
-          <div className="mt-8 flex items-start gap-3">
-            <GraduationCap className="w-6 h-6 text-gold-700 shrink-0 mt-0.5" aria-hidden="true" />
-            <p className="text-ink-muted">
-              Qualified Chartered Accountant, Institute of Chartered Accountants
-              of India (ICAI) &mdash; Diploma in Information Systems Audit (DISA).
-            </p>
-          </div>
         </div>
       </div>
     </Section>

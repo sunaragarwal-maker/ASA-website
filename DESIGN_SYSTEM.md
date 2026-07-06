@@ -96,6 +96,11 @@ few high-repetition spots rather than scattered everywhere:
   diagram — a visual echo of that page's "one firm for every number"
   line, in the same vocabulary as everything else here rather than a
   one-off illustration style.
+- **`Credentials.jsx`** (About page) — FCA/DISA/years/clients presented as
+  medallions (navy + gold ring + serif content), not another white
+  icon-card grid — a credential is a badge you've earned, which is
+  exactly what this construction already means everywhere else it
+  appears (Logo, Avatar, ProcessTimeline's step numbers).
 
 Deliberately unchanged: the navy/gold palette itself. A third accent
 color was considered and rejected — two disciplined colors read as more

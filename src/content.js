@@ -97,6 +97,30 @@ export const whyChooseUs = [
   },
 ];
 
+export const firmValues = [
+  {
+    title: "Straight Answers, Not Sales Pitches",
+    description:
+      "We'll tell you plainly what applies to your situation, even when the honest answer is simpler than you expected.",
+    icon: "MessageCircle",
+  },
+  {
+    title: "Direct Access, Not a Rotating Cast",
+    description: "You work with the same experienced people every time, not whoever's free that week.",
+    icon: "UserCheck",
+  },
+  {
+    title: "Deadlines Tracked, Not Remembered",
+    description: "A dedicated compliance calendar means nothing depends on someone's memory.",
+    icon: "CalendarCheck2",
+  },
+  {
+    title: "Confidentiality, No Exceptions",
+    description: "Your financial information is handled with the discretion it deserves, always.",
+    icon: "Lock",
+  },
+];
+
 export const testimonials = [
   {
     quote:
