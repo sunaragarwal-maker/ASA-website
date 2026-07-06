@@ -17,7 +17,7 @@ export default function ServiceCategoryCard({ category, index = 0 }) {
   return (
     <Link
       to={`/services/${category.slug}`}
-      className="group relative block overflow-hidden rounded-2xl border border-border bg-surface p-7 shadow-sm
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface p-7 shadow-sm
         transition-all duration-200 hover:shadow-md hover:-translate-y-0.5
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-600 focus-visible:ring-offset-2"
     >
@@ -32,7 +32,7 @@ export default function ServiceCategoryCard({ category, index = 0 }) {
       <Heading level={3} as="h3" className="relative mt-5">
         {category.name}
       </Heading>
-      <p className="relative mt-2 text-sm text-ink-muted leading-relaxed">{category.tagline}</p>
+      <p className="relative mt-2 text-sm text-ink-muted leading-relaxed grow">{category.tagline}</p>
 
       <div
         className="relative mt-5 flex items-center gap-1.5 text-sm font-medium text-gold-700

@@ -21,8 +21,8 @@ export default function ServicesTeaser() {
         subtext="Eight practice areas, run by one accountable team — here are four to start with."
       />
       <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {featured.map((category) => (
-          <ServiceCategoryCard key={category.slug} category={category} />
+        {featured.map((category, i) => (
+          <ServiceCategoryCard key={category.slug} category={category} index={i} />
         ))}
       </div>
       <div className="mt-10 flex justify-center">
