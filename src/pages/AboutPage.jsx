@@ -12,7 +12,7 @@ export default function AboutPage() {
         description="CA Anand Agarwal founded Anand Shyam & Associates on two decades of Chartered Accountancy experience in taxation, audit, and financial advisory."
         path="/about"
       />
-      <div className="pt-32 pb-4 bg-white">
+      <div className="pt-32 pb-4 bg-surface">
         <Container>
           <Breadcrumbs items={[{ label: "Home", path: "/" }, { label: "About", path: "/about" }]} />
         </Container>

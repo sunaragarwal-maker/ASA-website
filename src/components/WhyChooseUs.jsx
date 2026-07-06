@@ -1,6 +1,6 @@
 import { Award, Users, Clock, HandCoins } from "lucide-react";
 import { whyChooseUs } from "../content";
-import { Section, SectionHeading, IconTile } from "./ui";
+import { Section, SectionHeading, IconTile, Heading } from "./ui";
 
 const icons = { Award, Users, Clock, HandCoins };
 
@@ -15,8 +15,10 @@ export default function WhyChooseUs() {
           return (
             <div key={item.title} className="text-center px-4">
               <IconTile icon={Icon} circle className="mx-auto" />
-              <h3 className="mt-5 font-serif text-lg text-white">{item.title}</h3>
-              <p className="mt-2 text-sm text-gray-300 leading-relaxed">{item.description}</p>
+              <Heading level={3} as="h3" tone="onDark" className="mt-5">
+                {item.title}
+              </Heading>
+              <p className="mt-2 text-sm text-ink-inverted-muted leading-relaxed">{item.description}</p>
             </div>
           );
         })}

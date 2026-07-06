@@ -4,7 +4,7 @@ import { ArrowRight, PhoneCall } from "lucide-react";
 import { getServiceBySlug } from "../servicesData";
 import { getIcon } from "../iconRegistry";
 import { firm } from "../content";
-import { Container, Section, SectionHeading, Button } from "../components/ui";
+import { Container, Section, SectionHeading, Button, Eyebrow, Heading } from "../components/ui";
 import Seo from "../components/Seo";
 import Breadcrumbs from "../components/Breadcrumbs";
 import IconCard from "../components/IconCard";
@@ -57,13 +57,11 @@ export default function ServiceCategoryPage() {
           />
           <div className="mt-8 grid md:grid-cols-5 gap-12 items-center">
             <div className="md:col-span-3">
-              <p className="text-gold-400 tracking-eyebrow text-xs font-medium uppercase mb-4">
-                {category.name}
-              </p>
-              <h1 className="font-serif text-4xl md:text-5xl leading-tight text-white">
+              <Eyebrow tone="onDark">{category.name}</Eyebrow>
+              <Heading level={1} tone="onDark">
                 {category.tagline}
-              </h1>
-              <p className="mt-6 text-lg text-gray-300 max-w-xl">{category.heroSubtext}</p>
+              </Heading>
+              <p className="mt-6 text-lg text-ink-inverted-muted max-w-xl">{category.heroSubtext}</p>
               <div className="mt-9 flex flex-wrap items-center gap-4">
                 <Button as={Link} to="/contact">
                   Book a Consultation
@@ -89,7 +87,7 @@ export default function ServiceCategoryPage() {
       <Section tone="light">
         <div className="max-w-3xl">
           <SectionHeading align="left" eyebrow="Overview" title={`How We Help With ${category.name}`} />
-          <p className="mt-6 text-gray-600 leading-relaxed text-lg">{category.overview}</p>
+          <p className="mt-6 text-ink-muted leading-relaxed text-lg">{category.overview}</p>
         </div>
       </Section>
 
@@ -152,10 +150,10 @@ export default function ServiceCategoryPage() {
       {/* FINAL CTA */}
       <section className="bg-navy-950 py-16 md:py-20">
         <Container className="text-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-white max-w-2xl mx-auto">
+          <Heading level={2} tone="onDark" className="max-w-2xl mx-auto">
             Ready to talk about {category.name.toLowerCase()}?
-          </h2>
-          <p className="mt-4 text-gray-300 max-w-xl mx-auto">
+          </Heading>
+          <p className="mt-4 text-ink-inverted-muted max-w-xl mx-auto">
             A direct conversation, not a sales pitch — we'll tell you plainly what applies to your
             situation and what it will cost.
           </p>

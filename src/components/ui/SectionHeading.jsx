@@ -23,7 +23,7 @@ export default function SectionHeading({
         {title}
       </Heading>
       {subtext && (
-        <p className={`mt-4 ${tone === "onDark" ? "text-gray-300" : "text-ink-muted"}`}>
+        <p className={`mt-4 ${tone === "onDark" ? "text-ink-inverted-muted" : "text-ink-muted"}`}>
           {subtext}
         </p>
       )}

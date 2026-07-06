@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, PhoneCall } from "lucide-react";
 import { serviceCategories, landingFaqs } from "../servicesData";
 import { firm } from "../content";
-import { Container, Section, SectionHeading, Button } from "../components/ui";
+import { Container, Section, SectionHeading, Button, Eyebrow, Heading } from "../components/ui";
 import Seo from "../components/Seo";
 import Breadcrumbs from "../components/Breadcrumbs";
 import ServiceCategoryCard from "../components/ServiceCategoryCard";
@@ -35,13 +35,11 @@ export default function ServicesPage() {
         <Container className="relative">
           <Breadcrumbs tone="dark" items={[{ label: "Home", path: "/" }, { label: "Services", path: "/services" }]} />
           <div className="mt-8 max-w-2xl">
-            <p className="text-gold-400 tracking-eyebrow text-xs font-medium uppercase mb-4">
-              What We Offer
-            </p>
-            <h1 className="font-serif text-4xl md:text-5xl leading-tight text-white">
+            <Eyebrow tone="onDark">What We Offer</Eyebrow>
+            <Heading level={1} tone="onDark">
               One Firm for Every Number Your Business Touches
-            </h1>
-            <p className="mt-6 text-lg text-gray-300">
+            </Heading>
+            <p className="mt-6 text-lg text-ink-inverted-muted">
               Eight practice areas, run by one team that knows your full financial picture — from
               the first bookkeeping entry to the audit report a bank asks for years later.
             </p>
@@ -112,10 +110,10 @@ export default function ServicesPage() {
       {/* FINAL CTA */}
       <section className="bg-navy-950 py-16 md:py-20">
         <Container className="text-center">
-          <h2 className="font-serif text-3xl md:text-4xl text-white max-w-2xl mx-auto">
+          <Heading level={2} tone="onDark" className="max-w-2xl mx-auto">
             Not sure where to start? That's what the first call is for.
-          </h2>
-          <p className="mt-4 text-gray-300 max-w-xl mx-auto">
+          </Heading>
+          <p className="mt-4 text-ink-inverted-muted max-w-xl mx-auto">
             Tell us what's on your plate — we'll tell you plainly what applies and what it costs.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">

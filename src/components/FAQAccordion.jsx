@@ -55,7 +55,7 @@ export default function FAQAccordion({ faqs }) {
                 role="region"
                 aria-labelledby={buttonId}
                 hidden={!isOpen}
-                className="px-6 pb-5 text-gray-600 leading-relaxed"
+                className="px-6 pb-5 text-ink-muted leading-relaxed"
               >
                 {faq.a}
               </div>

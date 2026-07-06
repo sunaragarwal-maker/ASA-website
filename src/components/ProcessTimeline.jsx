@@ -23,7 +23,7 @@ export default function ProcessTimeline() {
           </div>
           <div className="lg:mt-4 pb-8 lg:pb-0">
             <p className="font-serif text-lg text-navy-950">{step.title}</p>
-            <p className="mt-1.5 text-sm text-gray-600 leading-relaxed">{step.description}</p>
+            <p className="mt-1.5 text-sm text-ink-muted leading-relaxed">{step.description}</p>
           </div>
         </li>
       ))}

@@ -21,7 +21,7 @@ export default function FounderMessage() {
         <div className="md:col-span-2 order-1 md:order-2">
           <Card tone="dark" padding="p-10" className="relative overflow-hidden">
             <Quote className="w-10 h-10 text-gold-500/40" aria-hidden="true" />
-            <p className="mt-4 text-gray-200 leading-relaxed italic">
+            <p className="mt-4 text-ink-inverted-muted leading-relaxed italic">
               &ldquo;Your success is the only measure of ours that matters.&rdquo;
             </p>
             <div className="mt-8 pt-6 border-t border-border-dark">

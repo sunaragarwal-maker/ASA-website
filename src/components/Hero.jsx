@@ -37,14 +37,14 @@ export default function Hero() {
           <Heading level={1} tone="onDark">
             {firm.tagline}
           </Heading>
-          <p className="mt-6 text-lg text-gray-300 max-w-xl">
+          <p className="mt-6 text-lg text-ink-inverted-muted max-w-xl">
             {firm.name} provides expert taxation, audit, and financial advisory
             services to individuals and businesses, delivered with the
             personal attention only an experienced, dedicated firm can offer.
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Button as={Link} to="/contact" size="lg">
+            <Button as={Link} to="/contact">
               Book a Consultation
               <ArrowRight className="w-4 h-4" />
             </Button>
@@ -53,7 +53,6 @@ export default function Hero() {
               href={`tel:${firm.phone.replace(/\s/g, "")}`}
               variant="outline"
               context="dark"
-              size="lg"
             >
               <PhoneCall className="w-4 h-4" />
               {firm.phone}
@@ -71,7 +70,7 @@ export default function Hero() {
               >
                 <Icon className="w-5 h-5 text-gold-500/70 mx-auto mb-2" aria-hidden="true" />
                 <div className="font-serif text-3xl text-gold-400">{s.value}</div>
-                <div className="mt-1 text-xs text-gray-300 uppercase tracking-wide">
+                <div className="mt-1 text-xs text-ink-inverted-muted uppercase tracking-wide">
                   {s.label}
                 </div>
               </div>

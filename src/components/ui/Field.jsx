@@ -6,7 +6,7 @@
 export default function Field({ label, htmlFor, required, error, helpText, className = "", children }) {
   return (
     <div className={className}>
-      <label className="block text-sm text-gray-600 mb-1.5" htmlFor={htmlFor}>
+      <label className="block text-sm text-ink-muted mb-1.5" htmlFor={htmlFor}>
         {label}
         {required && <span className="text-red-600 ml-0.5">*</span>}
       </label>

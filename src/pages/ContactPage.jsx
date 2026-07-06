@@ -11,7 +11,7 @@ export default function ContactPage() {
         description="Get in touch with Anand Shyam & Associates, Chartered Accountants in Kolkata, for a consultation on tax, audit, or compliance."
         path="/contact"
       />
-      <div className="pt-32 pb-4 bg-white">
+      <div className="pt-32 pb-4 bg-surface">
         <Container>
           <Breadcrumbs items={[{ label: "Home", path: "/" }, { label: "Contact", path: "/contact" }]} />
         </Container>

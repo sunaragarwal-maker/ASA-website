@@ -18,7 +18,7 @@ export default function IconTile({ icon: Icon, size = "md", circle = false, clas
 
   return (
     <div className={`${box} ${shape} flex items-center justify-center shrink-0 ${className}`}>
-      <Icon className={`${icon} text-gold-400`} />
+      <Icon className={`${icon} text-gold-400`} aria-hidden="true" />
     </div>
   );
 }

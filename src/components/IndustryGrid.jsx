@@ -13,7 +13,7 @@ export default function IndustryGrid() {
         return (
           <div
             key={industry.name}
-            className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white px-4 py-4"
+            className="flex items-center gap-3 rounded-xl border border-border bg-surface px-4 py-4"
           >
             <Icon className="w-5 h-5 text-gold-700 shrink-0" aria-hidden="true" />
             <span className="text-sm font-medium text-navy-950">{industry.name}</span>

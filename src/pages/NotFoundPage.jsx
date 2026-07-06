@@ -19,16 +19,16 @@ export default function NotFoundPage() {
         <Heading level={1} tone="onDark">
           This Page Doesn&rsquo;t Add Up
         </Heading>
-        <p className="mt-6 text-lg text-gray-300 max-w-xl mx-auto">
+        <p className="mt-6 text-lg text-ink-inverted-muted max-w-xl mx-auto">
           The page you&rsquo;re looking for may have moved or no longer exists. Let&rsquo;s get you
           back to solid ground.
         </p>
         <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
-          <Button as={Link} to="/" size="lg">
+          <Button as={Link} to="/">
             <HomeIcon className="w-4 h-4" />
             Back to Home
           </Button>
-          <Button as={Link} to="/contact" variant="outline" context="dark" size="lg">
+          <Button as={Link} to="/contact" variant="outline" context="dark">
             Contact Us
             <ArrowRight className="w-4 h-4" />
           </Button>
