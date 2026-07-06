@@ -9,6 +9,7 @@ import Seo from "../components/Seo";
 import Breadcrumbs from "../components/Breadcrumbs";
 import IconCard from "../components/IconCard";
 import BrandRing from "../components/BrandRing";
+import SealPattern from "../components/SealPattern";
 import IndustryGrid from "../components/IndustryGrid";
 import ProcessTimeline from "../components/ProcessTimeline";
 import WhyChooseUsGrid from "../components/WhyChooseUsGrid";
@@ -38,14 +39,7 @@ export default function ServiceCategoryPage() {
 
       {/* HERO */}
       <section className="relative bg-navy-950 pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.05]"
-          style={{
-            backgroundImage:
-              "linear-gradient(var(--color-gold-500) 1px, transparent 1px), linear-gradient(90deg, var(--color-gold-500) 1px, transparent 1px)",
-            backgroundSize: "48px 48px",
-          }}
-        />
+        <SealPattern />
         <Container className="relative">
           <Breadcrumbs
             tone="dark"
@@ -75,7 +69,7 @@ export default function ServiceCategoryPage() {
             </div>
             <div className="relative md:col-span-2 flex items-center justify-center">
               <BrandRing size={320} className="absolute opacity-[0.1]" />
-              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-3xl border border-white/10 bg-white/5 flex items-center justify-center">
+              <div className="relative w-40 h-40 md:w-48 md:h-48 rounded-full border border-gold-500/25 bg-white/5 flex items-center justify-center">
                 <Icon className="w-16 h-16 md:w-20 md:h-20 text-gold-500/60" aria-hidden="true" />
               </div>
             </div>

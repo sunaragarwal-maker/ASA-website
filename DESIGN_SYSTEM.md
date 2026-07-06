@@ -56,6 +56,45 @@ token.
 **Tracking** — `tracking-eyebrow` (0.2em) replaces the `tracking-[0.2em]`
 arbitrary value that was duplicated seven times.
 
+## Brand motif: the seal
+
+The logo (`Logo.jsx`) is a navy circle with a thin gold ring and a gold
+serif monogram — a seal, not just a wordmark. Rather than redesigning it,
+one later pass formalized that construction (circle + gold ring + gold
+serif content on navy) as the site's recurring signature, applied in a
+few high-repetition spots rather than scattered everywhere:
+
+- **`BrandRing.jsx`** — the logo's ring geometry alone, used as a large
+  low-opacity watermark (hero sections, footer, contact, founder
+  portraits). Unchanged by this pass; still the "big, sparse" usage.
+- **`SealPattern.jsx`** — a small stroke-only circle tiled at low opacity,
+  used as the background texture on every dark hero section (`Hero`,
+  `ServicesPage`, `ServiceCategoryPage`, `NotFoundPage`). Replaces a
+  generic crossed-line grid that had no connection to the brand; the
+  4 identical copies of that grid's inline style were also collapsed into
+  this one component.
+- **The ring border itself** — `Avatar`, `ProcessTimeline`'s step-number
+  circles, and the founder-initials circles (`About`, `FounderTeaser`) are
+  all "navy circle + gold serif content," matching the logo's fill and
+  type but previously missing the ring that makes it read as a seal
+  rather than a plain dark circle. All three now carry
+  `ring-1 ring-inset ring-gold-500/40` (or the `/25` variant on
+  `About`'s rectangular portrait frame, which stays rectangular but gets
+  a matching gold border instead of none).
+- **`Divider`'s `ornament` prop** — a hollow ring centered on a hairline,
+  used exactly once (the footer, present on every page) rather than on
+  every rule sitewide — the point is recognizable repetition, not
+  covering every surface in rings.
+- **Category-page hero icon** (`ServiceCategoryPage`) — was a squared,
+  white-bordered tile (`rounded-3xl border-white/10`); now a gold-ringed
+  circle, matching the medallion language instead of reading as a
+  generic SaaS card.
+
+Deliberately unchanged: the navy/gold palette itself. A third accent
+color was considered and rejected — two disciplined colors read as more
+premium than three, and the brief was to build a language *around* the
+existing mark, not widen the palette.
+
 ## Components
 
 | Component | Replaces |

@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6">
-          <Divider tone="dark" />
+          <Divider tone="dark" ornament />
           <p className="mt-6 text-center text-xs text-gray-500">
             &copy; {new Date().getFullYear()} {firm.name}. All rights reserved.
           </p>

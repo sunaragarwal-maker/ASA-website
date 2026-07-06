@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Home as HomeIcon } from "lucide-react";
 import BrandRing from "../components/BrandRing";
+import SealPattern from "../components/SealPattern";
 import Seo from "../components/Seo";
 import { Container, Eyebrow, Heading, Button } from "../components/ui";
 
@@ -13,6 +14,7 @@ export default function NotFoundPage() {
         path="/404"
         noindex
       />
+      <SealPattern />
       <BrandRing size={480} className="absolute -right-28 -top-28 opacity-[0.06]" />
       <Container className="relative text-center">
         <Eyebrow tone="onDark">Error 404</Eyebrow>

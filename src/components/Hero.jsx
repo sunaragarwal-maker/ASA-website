@@ -9,7 +9,8 @@ import {
 } from "lucide-react";
 import { firm, stats } from "../content";
 import BrandRing from "./BrandRing";
-import { Container, Eyebrow, Heading, Button } from "./ui";
+import SealPattern from "./SealPattern";
+import { Container, Eyebrow, Heading, Button, IconTile } from "./ui";
 
 const icons = { TrendingUp, Users, CalendarCheck2, BriefcaseBusiness };
 
@@ -19,14 +20,7 @@ export default function Hero() {
       id="home"
       className="relative bg-navy-950 pt-32 pb-20 md:pt-44 md:pb-28 overflow-hidden"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(var(--color-gold-500) 1px, transparent 1px), linear-gradient(90deg, var(--color-gold-500) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
+      <SealPattern />
       <BrandRing size={520} className="absolute -right-32 -top-32 opacity-[0.06]" />
 
       <Container className="relative grid md:grid-cols-5 gap-12 items-center">
@@ -68,7 +62,7 @@ export default function Hero() {
                 key={s.label}
                 className="rounded-xl border border-white/10 bg-white/5 px-5 py-6 text-center"
               >
-                <Icon className="w-5 h-5 text-gold-500/70 mx-auto mb-2" aria-hidden="true" />
+                <IconTile icon={Icon} circle size="sm" className="mx-auto mb-2" />
                 <div className="font-serif text-3xl text-gold-400">{s.value}</div>
                 <div className="mt-1 text-xs text-ink-inverted-muted uppercase tracking-wide">
                   {s.label}

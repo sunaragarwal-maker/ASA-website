@@ -11,7 +11,7 @@ export default function ProcessTimeline() {
       {processSteps.map((step, i) => (
         <li key={step.title} className="relative flex lg:flex-col gap-4 lg:gap-0 lg:text-center">
           <div className="flex flex-col items-center shrink-0">
-            <div className="w-11 h-11 rounded-full bg-navy-950 text-gold-400 font-serif flex items-center justify-center shrink-0">
+            <div className="w-11 h-11 rounded-full bg-navy-950 ring-1 ring-inset ring-gold-500/40 text-gold-400 font-serif flex items-center justify-center shrink-0">
               {i + 1}
             </div>
             {i < processSteps.length - 1 && (

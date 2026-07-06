@@ -16,7 +16,7 @@ export default function FounderTeaser() {
     <Section tone="light">
       <div className="grid md:grid-cols-5 gap-14 items-center">
         <div className="md:col-span-2 flex md:justify-center">
-          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-navy-900 flex items-center justify-center shrink-0">
+          <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full bg-navy-900 ring-1 ring-inset ring-gold-500/40 flex items-center justify-center shrink-0">
             <BrandRing size={160} className="absolute opacity-[0.18]" />
             <span className="relative font-serif text-4xl text-gold-500/70" aria-hidden="true">
               {firm.founderInitials}
