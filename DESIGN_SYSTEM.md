@@ -123,7 +123,7 @@ themselves):
 | `Seo` | per-route title/description/canonical/OG tags |
 | `Breadcrumbs` | visual trail + `BreadcrumbList` JSON-LD from one data source |
 | `FAQAccordion` | accessible accordion + `FAQPage` JSON-LD from one data source |
-| `MegaMenu` | desktop Services dropdown, driven by `servicesData.js` |
+| `MegaMenu` | desktop Services dropdown, driven by `servicesData.js`; positioned relative to `<nav>` (not the trigger button) so its width isn't constrained by exactly where "Services" sits, plus a featured "Book a Consultation" aside |
 | `ProcessTimeline`, `IndustryGrid`, `WhyChooseUsGrid` | the three sections repeated on the landing page and every category page |
 | `IconCard` | icon + title + description card — renders both "individual services" and "benefits" |
 | `ServiceCategoryCard` | the 8 clickable cards on the Services landing page |
@@ -135,6 +135,15 @@ themselves):
   ring with a context-appropriate offset.
 - **Disabled states**: didn't exist anywhere. `Button` and `Input`/`Textarea`
   now both support them.
+- **Nav focus/focusout**, found in a later navigation-specific pass: the
+  plain `Home`/`About`/`Contact` links and the logo link had no
+  focus-visible ring at all (only the Services trigger did); the mega menu
+  closed on Escape and outside-click but not when Tab moved focus past it,
+  so a keyboard user could leave it visibly open; the mobile menu had no
+  Escape handler and no `aria-controls` linking the toggle button to the
+  panel it controls. All fixed in `Navbar.jsx`/`MegaMenu.jsx`. The mobile
+  menu also gained a visual scrim (content behind it is `inert` already,
+  but wasn't visibly dimmed, which read as broken rather than disabled).
 - **Two real WCAG AA contrast failures**, found in a later self-review pass
   (not caught when each component was first built) and fixed sitewide, not
   just in the file where they were noticed:
